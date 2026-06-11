@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StockAI Ultimate</title>
+
+<style>
+body{
+    margin:0;
+    font-family:sans-serif;
+    background:#111827;
+    color:white;
+}
+
+header{
+    background:#1f2937;
+    padding:15px;
+    text-align:center;
+    font-size:24px;
+    font-weight:bold;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:20px;
+}
+
+.card{
+    background:#1f2937;
+    border-radius:12px;
+    padding:15px;
+    margin-bottom:15px;
+}
+
+input,select,textarea{
+    width:100%;
+    padding:10px;
+    margin-top:5px;
+    margin-bottom:10px;
+    border:none;
+    border-radius:8px;
+}
+
+button{
+    background:#2563eb;
+    color:white;
+    border:none;
+    padding:10px 15px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+button:hover{
+    opacity:0.9;
+}
+
+ul{
+    padding-left:20px;
+}
+</style>
+
+</head>
+<body>
+
+<header>📈 StockAI Ultimate</header>
+
+<div class="container">
+
+<div class="card">
+<h2>내 자산</h2>
+<h3 id="totalAsset">0 원</h3>
+</div>
+
+<div class="card">
+<h2>포트폴리오 추가</h2>
+
+<input id="assetName" placeholder="종목명">
+<input id="assetAmount" type="number" placeholder="금액">
+
+<button onclick="addAsset()">추가</button>
+
+<ul id="portfolioList"></ul>
+</div>
+
+<div class="card">
+<h2>매매일지</h2>
+
+<input id="tradeStock" placeholder="종목">
+
+<textarea id="tradeReason"
+placeholder="매수 이유"></textarea>
+
+<select id="emotion">
+<option>기대</option>
+<option>불안</option>
+<option>확신</option>
+<option>공포</option>
+</select>
+
+<button onclick="saveTrade()">
+매매일지 저장
+</button>
+
+<ul id="tradeList"></ul>
+</div>
+
+<div class="card">
+<h2>AI 투자 습관 분석</h2>
+
+<button onclick="analyze()">
+분석하기
+</button>
+
+<p id="analysis"></p>
+</div>
+
+<div class="card">
+<h2>투자 공부</h2>
+
+<ul>
+<li>ETF란?</li>
+<li>PER이란?</li>
+<li>PBR이란?</li>
+<li>ROE란?</li>
+<li>분산투자란?</li>
+</ul>
+</div>
+
+</div>
+
+<script>
+
+let portfolio =
+JSON.parse(localStorage.getItem("portfolio")) || [];
+
+let trades =
+JSON.parse(localStorage.getItem("trades")) || [];
+
+render();
+
+function addAsset(){
+
+const name =
+document.getElementById("assetName").value;
+
+const amount =
+Number(
+document.getElementById("assetAmount").value
+);
+
+if(!name || !amount) return;
+
+portfolio.push({
+name,
+amount
+});
+
+savePortfolio();
+render();
+}
+
+function savePortfolio(){
+
+localStorage.setItem(
+"portfolio",
+JSON.stringify(portfolio)
+);
+
+}
+
+function saveTrade(){
+
+const stock =
+document.getElementById("tradeStock").value;
+
+const reason =
+document.getElementById("tradeReason").value;
+
+const emotion =
+document.getElementById("emotion").value;
+
+trades.push({
+stock,
+reason,
+emotion,
+date:new Date().toLocaleDateString()
+});
+
+localStorage.setItem(
+"trades",
+JSON.stringify(trades)
+);
+
+render();
+}
+
+function render(){
+
+const list =
+document.getElementById("portfolioList");
+
+list.innerHTML="";
+
+let total=0;
+
+portfolio.forEach(item=>{
+
+total += item.amount;
+
+list.innerHTML +=
+`<li>${item.name} - ${item.amount.toLocaleString()}원</li>`;
+
+});
+
+document.getElementById("totalAsset")
+.innerText =
+total.toLocaleString()+" 원";
+
+const tradeList =
+document.getElementById("tradeList");
+
+tradeList.innerHTML="";
+
+trades.forEach(t=>{
+
+tradeList.innerHTML +=
+`<li>${t.date} | ${t.stock} | ${t.emotion}</li>`;
+
+});
+
+}
+
+function analyze(){
+
+let result="";
+
+const fear =
+trades.filter(
+t=>t.emotion==="공포"
+).length;
+
+const expectation =
+trades.filter(
+t=>t.emotion==="기대"
+).length;
+
+if(fear>3){
+
+result +=
+"공포에 의한 매매가 많습니다. ";
+
+}
+
+if(expectation>3){
+
+result +=
+"기대 심리가 높습니다. ";
+
+}
+
+if(result===""){
+
+result =
+"규칙적인 투자 습관을 유지하고 있습니다.";
+
+}
+
+document.getElementById("analysis")
+.innerText = result;
+
+}
+
+</script>
+
+</body>
+</html>
