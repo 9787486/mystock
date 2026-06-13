@@ -104,6 +104,13 @@ html,body{height:100%;font-family:var(--fs);background:var(--b0);color:var(--t0)
 .mkt-n{color:var(--t2);font-size:10px}
 .mkt-v{font-family:var(--fm);font-weight:600;font-size:11px}
 .mkt-c{font-family:var(--fm);font-size:10px}
+/* 실시간/예시 데이터 표시 뱃지 */
+.live-badge{display:inline-block;width:6px;height:6px;border-radius:50%;vertical-align:middle;margin-left:1px;background:var(--t3);cursor:help}
+.live-badge.pending{background:var(--gd);animation:lbpulse 1.4s ease-in-out infinite}
+.live-badge.live{background:var(--tl);box-shadow:0 0 4px var(--tl);animation:none}
+.live-badge.err{background:var(--up);box-shadow:0 0 4px var(--up);animation:none}
+.live-badge.sample{background:var(--t3);box-shadow:none;animation:none}
+@keyframes lbpulse{0%,100%{opacity:1}50%{opacity:.3}}
 .nb-g{padding:5px 0}
 .nb-l{padding:5px 1rem 3px;font-size:9px;color:var(--t3);letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--e0);margin-bottom:2px}
 .nb-b{
@@ -441,12 +448,12 @@ select option{background:var(--b3)}
     <div class="sb-logo-sub" id="sb-date">— 투자 도우미</div>
   </div>
   <div class="sb-mkt">
-    <div class="mkt-r"><span class="mkt-n">KOSPI</span><span class="mkt-v up">2,618</span><span class="mkt-c up">▲0.42%</span></div>
-    <div class="mkt-r"><span class="mkt-n">KOSDAQ</span><span class="mkt-v up">740.2</span><span class="mkt-c up">▲0.42%</span></div>
-    <div class="mkt-r"><span class="mkt-n">S&P500</span><span class="mkt-v dn">5,218</span><span class="mkt-c dn">▼0.18%</span></div>
-    <div class="mkt-r"><span class="mkt-n">USD/KRW</span><span class="mkt-v nu" id="sb-fx">1,381</span><span class="mkt-c nu" id="sb-fxc">—</span></div>
-    <div class="mkt-r"><span class="mkt-n" style="color:var(--gdt)">🥇 금</span><span class="mkt-v" style="color:var(--gdt)">$3,248</span><span class="mkt-c up">▲0.38%</span></div>
-    <div class="mkt-r"><span class="mkt-n" style="color:#f59e0b">₿ BTC</span><span class="mkt-v" style="color:#f59e0b" id="sb-btc">$104,200</span><span class="mkt-c up">▲1.80%</span></div>
+    <div class="mkt-r"><span class="mkt-n">KOSPI <span class="live-badge sample" title="예시 데이터 (실시간 아님)"></span></span><span class="mkt-v up">2,618</span><span class="mkt-c up">▲0.42%</span></div>
+    <div class="mkt-r"><span class="mkt-n">KOSDAQ <span class="live-badge sample" title="예시 데이터 (실시간 아님)"></span></span><span class="mkt-v up">740.2</span><span class="mkt-c up">▲0.42%</span></div>
+    <div class="mkt-r"><span class="mkt-n">S&P500 <span class="live-badge sample" title="예시 데이터 (실시간 아님)"></span></span><span class="mkt-v dn">5,218</span><span class="mkt-c dn">▼0.18%</span></div>
+    <div class="mkt-r"><span class="mkt-n">USD/KRW <span class="live-badge pending" id="lb-fx-sb" title="실시간 환율 조회 중..."></span></span><span class="mkt-v nu" id="sb-fx">1,381</span><span class="mkt-c nu" id="sb-fxc">—</span></div>
+    <div class="mkt-r"><span class="mkt-n" style="color:var(--gdt)">🥇 금 <span class="live-badge pending" id="lb-gold-sb" title="실시간 시세 조회 중... (PAXG 기준)"></span></span><span class="mkt-v" style="color:var(--gdt)" id="sb-gold">$3,248</span><span class="mkt-c up" id="sb-gold-c">▲0.38%</span></div>
+    <div class="mkt-r"><span class="mkt-n" style="color:#f59e0b">₿ BTC <span class="live-badge pending" id="lb-btc-sb" title="실시간 시세 조회 중..."></span></span><span class="mkt-v" style="color:#f59e0b" id="sb-btc">$104,200</span><span class="mkt-c up" id="sb-btc-c">▲1.80%</span></div>
   </div>
   <div class="nb-g">
     <div class="nb-l">시장</div>
@@ -532,6 +539,13 @@ select option{background:var(--b3)}
 
   <!-- ══ 2. 국내 시장 ══════════════════════════════ -->
   <section class="sec" id="sec-korea">
+    <div class="card" style="background:rgba(46,74,98,.15);border-color:var(--e2)">
+      <div class="c-body" style="display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--t1)">
+        <span class="live-badge sample" style="margin:0"></span>
+        이 페이지의 지수·종목·업종 데이터는 <strong>예시(샘플) 데이터</strong>입니다. 실시간 시세는 증권사 앱·HTS를 확인하세요.
+        <span style="margin-left:auto"><a class="ca" onclick="nav('settings')">데이터 출처 보기 →</a></span>
+      </div>
+    </div>
     <div class="mg">
       <div class="mc mc-tl"><div class="ml">코스피</div><div class="mv up">2,618</div><div class="ms up">▲ 0.42%</div></div>
       <div class="mc mc-tl"><div class="ml">코스닥</div><div class="mv up">740.2</div><div class="ms up">▲ 0.42%</div></div>
@@ -550,6 +564,13 @@ select option{background:var(--b3)}
 
   <!-- ══ 3. 미국 시장 ══════════════════════════════ -->
   <section class="sec" id="sec-us">
+    <div class="card" style="background:rgba(46,74,98,.15);border-color:var(--e2)">
+      <div class="c-body" style="display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--t1)">
+        <span class="live-badge sample" style="margin:0"></span>
+        이 페이지의 지수·종목·섹터 데이터는 <strong>예시(샘플) 데이터</strong>입니다. 실시간 시세는 증권사 앱·HTS를 확인하세요.
+        <span style="margin-left:auto"><a class="ca" onclick="nav('settings')">데이터 출처 보기 →</a></span>
+      </div>
+    </div>
     <div class="mg">
       <div class="mc"><div class="ml">S&P 500</div><div class="mv dn">5,218</div><div class="ms dn">▼ 0.18%</div></div>
       <div class="mc"><div class="ml">나스닥 100</div><div class="mv dn">16,742</div><div class="ms dn">▼ 0.18%</div></div>
@@ -819,7 +840,7 @@ select option{background:var(--b3)}
         </div>
         <!-- 편집 -->
         <div id="acc-edit" style="display:none;flex-direction:column;gap:10px;margin-top:4px">
-          <div class="eg"><div class="esl">기본 정보</div><div class="er"><label>이름</label><input type="text" id="e-name" placeholder="예: 가도연"></div></div>
+          <div class="eg"><div class="esl">기본 정보</div><div class="er"><label>이름</label><input type="text" id="e-name" placeholder="예: 홍길동"></div></div>
           <div class="eg">
             <div class="esl">첫 번째 계좌</div>
             <div class="er"><label>증권사</label><select id="e-br1"><option>한국투자증권 (한투)</option><option>삼성증권</option><option>NH투자증권</option><option>키움증권</option><option>미래에셋증권</option><option>KB증권</option><option>신한투자증권</option><option>토스증권</option><option>기타</option></select></div>
@@ -841,6 +862,57 @@ select option{background:var(--b3)}
       <div class="c-body" style="display:flex;gap:16px;align-items:center;flex-wrap:wrap">
         <div><div style="font-size:10px;color:var(--t2);margin-bottom:4px">총 자산</div><div style="font-size:28px;font-weight:700;font-family:var(--fm)" id="s-total" class="up">—</div></div>
         <div style="flex:1;min-width:150px" id="s-bkdn"></div>
+      </div>
+    </div>
+    <div class="card" id="api-key-card">
+      <div class="card-hd">
+        <div class="ct"><i class="ti ti-key"></i>AI 분석 — Claude API 키</div>
+        <span class="chip" id="api-key-status" style="font-size:10px"></span>
+      </div>
+      <div class="c-body">
+        <div style="font-size:11.5px;color:var(--t1);line-height:1.7;margin-bottom:10px">
+          이 앱을 GitHub Pages 등 외부에 배포해서 쓰는 경우, <strong style="color:var(--gdt)">인앱 AI 분석가</strong> 기능은
+          본인의 Anthropic API 키가 있어야 작동합니다. (Claude.ai 내부에서 직접 쓸 때는 필요 없습니다.)
+        </div>
+        <div class="irow" style="margin-bottom:8px">
+          <input type="password" id="api-key-input" placeholder="sk-ant-api03-...">
+          <button class="btn btn-sm" onclick="toggleKeyVisibility()" id="api-key-toggle"><i class="ti ti-eye"></i></button>
+          <button class="btn btn-sm btn-gd" onclick="saveApiKey()"><i class="ti ti-check"></i>저장</button>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px">
+          <button class="btn btn-sm btn-danger" onclick="clearApiKey()"><i class="ti ti-trash"></i>키 삭제</button>
+          <a class="btn btn-sm" href="https://console.anthropic.com/settings/keys" target="_blank" rel="noopener"><i class="ti ti-external-link"></i>API 키 발급받기</a>
+        </div>
+        <div style="font-size:10.5px;color:var(--t2);line-height:1.8;padding:8px 10px;background:var(--b0);border:1px solid var(--e0);border-radius:var(--r)">
+          ⚠️ <strong>주의</strong> — API 키는 이 브라우저의 localStorage에만 저장되며 서버로 전송되지 않습니다. 다만 본인 PC/브라우저에 저장되는 것이므로
+          공용 컴퓨터에서는 사용 후 <strong>키 삭제</strong>를 눌러 주세요. API 사용량에 따라 Anthropic 계정에 <strong>비용이 청구</strong>될 수 있습니다.
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-hd"><div class="ct"><i class="ti ti-database-export"></i>시세 데이터 출처 안내</div></div>
+      <div class="c-body">
+        <div style="font-size:11.5px;color:var(--t1);line-height:1.7;margin-bottom:10px">
+          무료로 안정적으로 제공되는 데이터는 <span class="live-badge live" style="margin:0 2px"></span><strong style="color:var(--tl)">실시간</strong>으로 연동했고,
+          코스피·코스닥·미국 주가지수 등은 무료 실시간 API가 마땅치 않아 <span class="live-badge sample" style="margin:0 2px"></span><strong style="color:var(--t1)">예시 데이터</strong>로 표시됩니다.
+          좌측 사이드바·대시보드의 작은 점이 상태를 나타냅니다.
+        </div>
+        <table class="tbl">
+          <thead><tr><th>항목</th><th>상태</th><th>출처</th></tr></thead>
+          <tbody>
+            <tr><td>USD/KRW 환율</td><td><span class="live-badge live" style="margin:0"></span> 실시간</td><td style="color:var(--t2)">ExchangeRate-API (무료, 5분마다 갱신)</td></tr>
+            <tr><td>비트코인 · 이더리움</td><td><span class="live-badge live" style="margin:0"></span> 실시간</td><td style="color:var(--t2)">CoinGecko (무료, 5분마다 갱신)</td></tr>
+            <tr><td>금(Gold)</td><td><span class="live-badge live" style="margin:0"></span> 실시간(근사)</td><td style="color:var(--t2)">CoinGecko PAXG 토큰 가격 — 실제 금 시세와 소폭 차이 가능</td></tr>
+            <tr><td>코스피·코스닥</td><td><span class="live-badge sample" style="margin:0"></span> 예시</td><td style="color:var(--t2)">KRX 무료 실시간 API 부재</td></tr>
+            <tr><td>S&P500·나스닥·다우·VIX·10Y금리</td><td><span class="live-badge sample" style="margin:0"></span> 예시</td><td style="color:var(--t2)">무료+CORS+키없는 API 부재</td></tr>
+            <tr><td>개별 종목 (Mag7, 국내 종목 등)</td><td><span class="live-badge sample" style="margin:0"></span> 예시</td><td style="color:var(--t2)">유료 API 또는 백엔드 프록시 필요</td></tr>
+            <tr><td>은(Silver)·WTI·엔/달러</td><td><span class="live-badge sample" style="margin:0"></span> 예시</td><td style="color:var(--t2)">무료 실시간 API 부재</td></tr>
+          </tbody>
+        </table>
+        <div style="font-size:10.5px;color:var(--t2);line-height:1.8;margin-top:10px;padding:8px 10px;background:var(--b0);border:1px solid var(--e0);border-radius:var(--r)">
+          💡 코스피·나스닥 등을 실시간으로 보려면 보통 <strong>유료 시세 API</strong>(예: 한국투자증권 OpenAPI, Alpha Vantage, Twelve Data)를 발급받아 연동하거나,
+          CORS를 우회하는 <strong>백엔드 프록시 서버</strong>를 별도로 구축해야 합니다. 정확한 실시간 시세가 필요하다면 증권사 앱·HTS를 함께 확인하세요.
+        </div>
       </div>
     </div>
     <div class="card">
@@ -929,6 +1001,7 @@ const S={
   alarms:DB.g('sa_alarms',[{stk:'삼성전자',prc:'80000',dir:'above',id:1},{stk:'SK하이닉스',prc:'200000',dir:'below',id:2}]),
   goal:DB.g('sa_goal',{target:100000000,date:'2030-12-31',monthly:300000,memo:'5년 안에 1억 목표'}),
   fx:1381,
+  apiKey:DB.g('sa_apikey',''),
 };
 function sv(k){DB.s('sa_'+k,S[k])}
 
@@ -965,25 +1038,95 @@ function tick(){
 }
 tick();setInterval(tick,30000);
 
-/* ── Exchange Rate API ── */
+/* ── 실시간 데이터 배지 헬퍼 ── */
+function setBadge(ids,state,title){
+  ids.forEach(id=>{
+    const e=document.getElementById(id);if(!e)return;
+    e.classList.remove('pending','live','err','sample');
+    e.classList.add(state);
+    if(title)e.title=title;
+  });
+}
+function setVal(ids,text){ids.forEach(id=>{const e=document.getElementById(id);if(e)e.textContent=text})}
+function setChg(ids,chg,suffix=''){
+  const cls=chg>=0?'up':'dn';
+  const txt=(chg>=0?'▲ ':'▼ ')+Math.abs(chg).toFixed(2)+'%'+suffix;
+  ids.forEach(id=>{
+    const e=document.getElementById(id);if(!e)return;
+    e.textContent=txt;
+    e.classList.remove('up','dn');e.classList.add(cls);
+  });
+}
+
+/* ── Exchange Rate API (open.er-api.com — 무료, 키 불필요, CORS 허용) ── */
 async function fetchFX(){
   try{
     const r=await fetch('https://open.er-api.com/v6/latest/USD');
+    if(!r.ok)throw new Error('HTTP '+r.status);
     const d=await r.json();
     if(d.rates?.KRW){
       S.fx=Math.round(d.rates.KRW);
       const s=S.fx.toLocaleString();
-      ['sb-fx','h-fx-val'].forEach(id=>{const e=document.getElementById(id);if(e)e.textContent=s});
+      setVal(['sb-fx','h-fx-val'],s);
       const hfxs=document.getElementById('h-fx-sub-val');if(hfxs)hfxs.textContent='실시간 환율';
       const fc=document.getElementById('sb-fxc');if(fc){const diff=S.fx-1381;fc.textContent=(diff>=0?'▲':'▼')+Math.abs(diff)+'원';fc.className='mkt-c '+(diff>=0?'up':'dn')}
       document.getElementById('fx-big').textContent=`1 USD = ${s} KRW`;
       document.getElementById('fx-src').textContent=`출처: ExchangeRate-API · ${new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'})} 기준`;
       document.getElementById('tb-fx').textContent=`USD ${s}`;
+      setBadge(['lb-fx-sb'],'live','실시간 환율 (ExchangeRate-API)');
       toast('환율 업데이트 완료 ✓');
-    }
-  }catch{document.getElementById('fx-src').textContent='환율 조회 실패 — 기본값(1,381원) 사용'}
+    } else throw new Error('데이터 없음');
+  }catch{
+    document.getElementById('fx-src').textContent='환율 조회 실패 — 기본값(1,381원) 사용';
+    setBadge(['lb-fx-sb'],'err','조회 실패 — 네트워크를 확인하세요');
+    const hfxs=document.getElementById('h-fx-sub-val');if(hfxs)hfxs.textContent='조회 실패';
+  }
 }
 fetchFX();
+
+/* ── 암호화폐·금 시세 (CoinGecko — 무료, 키 불필요, CORS 허용)
+   금은 PAXG(PAX Gold, 1토큰≈1트로이온스 추적 토큰)로 근사 ── */
+async function fetchCrypto(){
+  const pendingIds=['lb-btc','lb-eth','lb-gold','lb-btc-sb','lb-gold-sb'];
+  try{
+    const r=await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,pax-gold&vs_currencies=usd&include_24hr_change=true');
+    if(!r.ok)throw new Error('HTTP '+r.status);
+    const d=await r.json();
+    let any=false;
+
+    if(d.bitcoin?.usd){
+      const p=Math.round(d.bitcoin.usd),chg=d.bitcoin.usd_24h_change||0;
+      setVal(['h-btc','sb-btc'],'$'+p.toLocaleString());
+      setChg(['h-btc-c','sb-btc-c'],chg);
+      setBadge(['lb-btc','lb-btc-sb'],'live','실시간 시세 (CoinGecko)');
+      any=true;
+    }
+    if(d.ethereum?.usd){
+      const p=Math.round(d.ethereum.usd),chg=d.ethereum.usd_24h_change||0;
+      setVal(['h-eth'],'$'+p.toLocaleString());
+      setChg(['h-eth-c'],chg);
+      setBadge(['lb-eth'],'live','실시간 시세 (CoinGecko)');
+      any=true;
+    }
+    if(d['pax-gold']?.usd){
+      const p=Math.round(d['pax-gold'].usd),chg=d['pax-gold'].usd_24h_change||0;
+      setVal(['h-gold','sb-gold'],'$'+p.toLocaleString());
+      setChg(['h-gold-c'],chg,' · PAXG');
+      const goldSbC=document.getElementById('sb-gold-c');
+      if(goldSbC){goldSbC.textContent=(chg>=0?'▲':'▼')+Math.abs(chg).toFixed(2)+'%';goldSbC.className='mkt-c '+(chg>=0?'up':'dn')}
+      setBadge(['lb-gold','lb-gold-sb'],'live','실시간 시세 (CoinGecko PAXG 기준 · 실제 금 시세와 소폭 차이 가능)');
+      any=true;
+    }
+    if(!any)throw new Error('데이터 없음');
+    toast('₿ 암호화폐·🥇금 시세 업데이트 ✓');
+  }catch{
+    setBadge(pendingIds,'err','조회 실패 — 네트워크를 확인하거나 잠시 후 다시 시도하세요');
+  }
+}
+fetchCrypto();
+// 5분마다 자동 갱신 (CoinGecko 무료 한도 내)
+setInterval(fetchCrypto,5*60*1000);
+setInterval(fetchFX,5*60*1000);
 
 function convFX(from){
   const r=S.fx;
@@ -1094,14 +1237,14 @@ function renderHome(){
     <div class="mc"><div class="ml">S&P 500</div><div class="mv dn">5,218</div><div class="ms dn">▼ 0.18%</div></div>
     <div class="mc"><div class="ml">나스닥 100</div><div class="mv dn">16,742</div><div class="ms dn">▼ 0.18%</div></div>
     <div class="mc mc-gd"><div class="ml">원/달러</div><div class="mv nu" id="h-fx-val">${S.fx.toLocaleString()}</div><div class="ms nu" id="h-fx-sub-val">조회 중...</div></div>`;
-  // metric grid 2 (commodities)
+  // metric grid 2 (commodities + crypto — BTC/ETH/Gold live via CoinGecko)
   document.getElementById('h-mg2').innerHTML=`
-    <div class="mc mc-gd"><div class="ml" style="color:var(--gdt)">🥇 금(Gold)</div><div class="mv" style="color:var(--gdt)">$3,248</div><div class="ms up">▲ 0.38% · oz</div></div>
-    <div class="mc"><div class="ml" style="color:#9ca3af">🥈 은(Silver)</div><div class="mv" style="color:#9ca3af">$32.14</div><div class="ms dn">▼ 0.65% · oz</div></div>
-    <div class="mc"><div class="ml" style="color:#e97316">🛢️ WTI</div><div class="mv" style="color:#e97316">$77.82</div><div class="ms up">▲ 0.70% · bbl</div></div>
-    <div class="mc mc-gd"><div class="ml" style="color:#f59e0b">₿ 비트코인</div><div class="mv" style="color:#f59e0b">$104,200</div><div class="ms up">▲ 1.80%</div></div>
-    <div class="mc"><div class="ml" style="color:#a78bfa">⟠ 이더리움</div><div class="mv" style="color:#a78bfa">$2,482</div><div class="ms up">▲ 1.55%</div></div>
-    <div class="mc"><div class="ml" style="color:#60a5fa">🇯🇵 엔/달러</div><div class="mv" style="color:#60a5fa">155.4</div><div class="ms dn">▼ 0.19%</div></div>`;
+    <div class="mc mc-gd"><div class="ml" style="color:var(--gdt)">🥇 금(Gold) <span class="live-badge pending" id="lb-gold" title="실시간 시세 조회 중... (PAXG 기준 근사치)"></span></div><div class="mv" style="color:var(--gdt)" id="h-gold">$3,248</div><div class="ms up" id="h-gold-c">▲ 0.38% · oz</div></div>
+    <div class="mc"><div class="ml" style="color:#9ca3af">🥈 은(Silver) <span class="live-badge sample" title="예시 데이터 (실시간 아님)"></span></div><div class="mv" style="color:#9ca3af">$32.14</div><div class="ms dn">▼ 0.65% · oz</div></div>
+    <div class="mc"><div class="ml" style="color:#e97316">🛢️ WTI <span class="live-badge sample" title="예시 데이터 (실시간 아님)"></span></div><div class="mv" style="color:#e97316">$77.82</div><div class="ms up">▲ 0.70% · bbl</div></div>
+    <div class="mc mc-gd"><div class="ml" style="color:#f59e0b">₿ 비트코인 <span class="live-badge pending" id="lb-btc" title="실시간 시세 조회 중..."></span></div><div class="mv" style="color:#f59e0b" id="h-btc">$104,200</div><div class="ms up" id="h-btc-c">▲ 1.80%</div></div>
+    <div class="mc"><div class="ml" style="color:#a78bfa">⟠ 이더리움 <span class="live-badge pending" id="lb-eth" title="실시간 시세 조회 중..."></span></div><div class="mv" style="color:#a78bfa" id="h-eth">$2,482</div><div class="ms up" id="h-eth-c">▲ 1.55%</div></div>
+    <div class="mc"><div class="ml" style="color:#60a5fa">🇯🇵 엔/달러 <span class="live-badge sample" title="예시 데이터 (실시간 아님)"></span></div><div class="mv" style="color:#60a5fa">155.4</div><div class="ms dn">▼ 0.19%</div></div>`;
   // themes
   document.getElementById('h-themes').innerHTML=D.hotThemes.map(t=>`<div class="tr"><div><div class="tn">${t.n}</div><div class="td">${t.d}</div></div><div class="tp ${t.up?'up':'dn'}">${t.c}</div></div>`).join('');
   // news
@@ -1435,19 +1578,102 @@ function md2html(text){
 function scrollAI(){const m=document.getElementById('ai-msgs');requestAnimationFrame(()=>m.scrollTop=m.scrollHeight)}
 
 async function callClaude(userMsg){
+  // API 키 확인 — 없으면 즉시 안내하고 종료
+  if(!S.apiKey){
+    appendAIMsg('assistant');
+    const msgs=document.getElementById('ai-msgs');
+    const last=msgs.lastElementChild.querySelector('.ai-bbl');
+    last.innerHTML=`<div style="line-height:1.8">
+      🔑 <strong>Claude API 키가 설정되지 않았습니다.</strong><br><br>
+      이 앱이 외부(GitHub Pages 등)에 배포된 상태에서는 인앱 AI가 작동하려면 본인의 Anthropic API 키가 필요합니다.<br><br>
+      <strong>설정 방법</strong>
+      <ol style="margin:6px 0 0 16px;padding:0">
+        <li><a href="https://console.anthropic.com/settings/keys" target="_blank" rel="noopener" style="color:var(--gdt)">console.anthropic.com</a>에서 API 키 발급</li>
+        <li>좌측 메뉴 <strong>환경설정 → AI 분석 — Claude API 키</strong>에 붙여넣고 저장</li>
+        <li>다시 질문해 보세요</li>
+      </ol><br>
+      <span style="color:var(--t2);font-size:11px">⚠️ API 사용량에 따라 비용이 청구될 수 있습니다.</span>
+    </div>`;
+    aiTyping=false;document.getElementById('ai-send').disabled=false;
+    if(aiHistory.length&&aiHistory[aiHistory.length-1]?.role==='user')aiHistory.pop();
+    nav('settings');
+    return;
+  }
+
   aiTyping=true;document.getElementById('ai-send').disabled=true;
   const bubble=appendAIMsg('assistant');let full='';
   try{
-    const resp=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1024,system:sysPrompt(),stream:true,messages:aiHistory})});
-    if(!resp.ok){const err=await resp.json().catch(()=>({}));throw new Error(err.error?.message||`HTTP ${resp.status}`)}
+    const resp=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{
+        'Content-Type':'application/json',
+        'x-api-key':S.apiKey,
+        'anthropic-version':'2023-06-01',
+        'anthropic-dangerous-direct-browser-access':'true'
+      },
+      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1024,system:sysPrompt(),stream:true,messages:aiHistory})
+    });
+    if(!resp.ok){
+      const err=await resp.json().catch(()=>({}));
+      const code=resp.status;
+      let hint='';
+      if(code===401) hint='API 키가 올바르지 않습니다. 환경설정에서 키를 다시 확인해 주세요.';
+      else if(code===429) hint='요청이 너무 많습니다 (Rate limit). 잠시 후 다시 시도해 주세요.';
+      else if(code===529 || code===503) hint='Anthropic 서버가 일시적으로 과부하 상태입니다. 잠시 후 다시 시도해 주세요.';
+      else hint=err.error?.message || `HTTP ${code}`;
+      throw new Error(hint);
+    }
     const reader=resp.body.getReader(),dec=new TextDecoder();let buf='';
     bubble.innerHTML='<span class="ai-cursor"></span>';
     while(true){const{done,value}=await reader.read();if(done)break;buf+=dec.decode(value,{stream:true});const lines=buf.split('\n');buf=lines.pop();
       for(const line of lines){if(!line.startsWith('data: '))continue;const d=line.slice(6).trim();if(d==='[DONE]')break;try{const ev=JSON.parse(d);if(ev.type==='content_block_delta'&&ev.delta?.type==='text_delta'){full+=ev.delta.text;bubble.innerHTML=md2html(full)+'<span class="ai-cursor"></span>';scrollAI()}}catch{}}
     }
     bubble.innerHTML=md2html(full);aiHistory.push({role:'assistant',content:full});
-  }catch(err){bubble.innerHTML=`<span style="color:var(--upt)">⚠️ 오류: ${esc(err.message)}</span><br><span style="color:var(--t2);font-size:11px">다시 시도해 주세요.</span>`;if(aiHistory.length&&aiHistory[aiHistory.length-1]?.role==='user')aiHistory.pop()}
+  }catch(err){
+    let msg=err.message||String(err);
+    let extra='';
+    // 네트워크/CORS 레벨 실패 (TypeError: Failed to fetch)
+    if(err instanceof TypeError || /Failed to fetch|NetworkError/i.test(msg)){
+      msg='네트워크 요청이 차단되었습니다 (Failed to fetch)';
+      extra=`가능한 원인:<br>
+        · API 키가 비어있거나 형식이 잘못됨<br>
+        · 인터넷 연결 또는 방화벽/광고차단기 문제<br>
+        · 브라우저 확장 프로그램이 요청을 차단<br><br>
+        환경설정에서 API 키를 다시 확인하거나, 시크릿 모드/다른 브라우저에서 시도해 보세요.`;
+    }
+    bubble.innerHTML=`<span style="color:var(--upt)">⚠️ 오류: ${esc(msg)}</span>${extra?'<br><br><span style="color:var(--t2);font-size:11px">'+extra+'</span>':'<br><span style="color:var(--t2);font-size:11px">다시 시도해 주세요.</span>'}`;
+    if(aiHistory.length&&aiHistory[aiHistory.length-1]?.role==='user')aiHistory.pop();
+  }
   finally{aiTyping=false;document.getElementById('ai-send').disabled=false;document.getElementById('ai-inp').focus()}
+}
+
+/* ── API 키 관리 ── */
+function refreshApiKeyStatus(){
+  const st=document.getElementById('api-key-status');
+  if(!st)return;
+  if(S.apiKey){st.textContent='✓ 설정됨';st.className='chip c-tl';}
+  else{st.textContent='설정 안 됨';st.className='chip c-up';}
+  const inp=document.getElementById('api-key-input');
+  if(inp && S.apiKey) inp.value=S.apiKey;
+}
+function saveApiKey(){
+  const v=document.getElementById('api-key-input').value.trim();
+  if(!v){toast('API 키를 입력해 주세요');return}
+  if(!v.startsWith('sk-ant-')){
+    if(!confirm('일반적인 Anthropic 키 형식(sk-ant-...)이 아닙니다. 그래도 저장하시겠습니까?'))return;
+  }
+  S.apiKey=v;DB.s('sa_apikey',v);refreshApiKeyStatus();toast('API 키 저장 완료 ✓');
+}
+function clearApiKey(){
+  if(!S.apiKey){toast('저장된 키가 없습니다');return}
+  if(!confirm('저장된 API 키를 삭제하시겠습니까?'))return;
+  S.apiKey='';DB.s('sa_apikey','');document.getElementById('api-key-input').value='';refreshApiKeyStatus();toast('API 키 삭제 완료');
+}
+function toggleKeyVisibility(){
+  const inp=document.getElementById('api-key-input');
+  const btn=document.getElementById('api-key-toggle');
+  if(inp.type==='password'){inp.type='text';btn.innerHTML='<i class="ti ti-eye-off"></i>'}
+  else{inp.type='password';btn.innerHTML='<i class="ti ti-eye"></i>'}
 }
 
 function cpMsg(btn){const bbl=btn.closest('.ai-m').querySelector('.ai-bbl');navigator.clipboard.writeText(bbl.innerText).then(()=>{btn.innerHTML='<i class="ti ti-check"></i>';setTimeout(()=>btn.innerHTML='<i class="ti ti-copy"></i>',1500)}).catch(()=>toast('복사 실패'))}
@@ -1486,7 +1712,7 @@ function initAll(){
   renderHome();renderKorea();renderUS();renderTheme();
   renderNewsTabs();renderNews();
   renderJournal();renderGoal();renderPortfolio();
-  renderWatch();renderAISection();renderDivi();renderAlarms();renderAccView();updateSb();
+  renderWatch();renderAISection();renderDivi();renderAlarms();renderAccView();updateSb();refreshApiKeyStatus();
 }
 
 (function(){
