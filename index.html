@@ -331,92 +331,6 @@ select option{background:var(--b3)}
 .gt{font-size:11.5px;font-weight:500;margin-bottom:1px}
 .gd{font-size:10px;color:var(--t2)}
 
-/* ══════════ AI 드로어 ══════════ */
-#ai-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:99;display:none;backdrop-filter:blur(2px)}
-#ai-overlay.show{display:block}
-#ai-drawer{
-  position:fixed;right:-420px;top:0;bottom:0;width:400px;
-  background:#0a1422;border-left:1px solid var(--e2);
-  display:flex;flex-direction:column;z-index:100;
-  transition:right .28s cubic-bezier(.4,0,.2,1);
-  box-shadow:-6px 0 40px rgba(0,0,0,.7);
-}
-#ai-drawer.open{right:0}
-#ai-hd{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:.75rem 1rem;background:linear-gradient(135deg,#0a1628,#06100e);
-  border-bottom:1px solid var(--e2);flex-shrink:0;
-}
-.ai-hl{display:flex;align-items:center;gap:9px}
-.ai-av0{width:30px;height:30px;border-radius:7px;background:linear-gradient(135deg,var(--gd),#b97a00);display:flex;align-items:center;justify-content:center;font-size:13px;color:#000;font-weight:700}
-.ai-ht{font-size:13px;font-weight:700;color:var(--t0)}
-.ai-hs{font-size:10px;color:var(--t2);margin-top:1px;font-family:var(--fm)}
-.ai-badge{font-size:9px;padding:2px 7px;border-radius:2px;background:rgba(240,165,0,.12);color:var(--gd);border:1px solid rgba(240,165,0,.25);font-family:var(--fm);letter-spacing:.05em}
-.ai-icon-btn{background:transparent;border:none;color:var(--t2);cursor:pointer;font-size:17px;padding:4px;border-radius:3px;transition:all .1s;display:flex;align-items:center}
-.ai-icon-btn:hover{background:var(--b4);color:var(--t0)}
-#ai-qbar{padding:.5rem .9rem;border-bottom:1px solid var(--e0);display:flex;gap:5px;overflow-x:auto;flex-shrink:0}
-#ai-qbar::-webkit-scrollbar{height:3px}
-.ai-qc{
-  white-space:nowrap;padding:3px 10px;border-radius:999px;
-  border:1px solid var(--e1);background:var(--b4);color:var(--t1);
-  font-size:11px;cursor:pointer;flex-shrink:0;transition:all .12s;
-}
-.ai-qc:hover{border-color:var(--gd);color:var(--gd)}
-#ai-msgs{flex:1;overflow-y:auto;padding:.75rem;display:flex;flex-direction:column;gap:9px}
-.ai-mwrap{display:flex;flex-direction:column;gap:2px}
-.ai-m{display:flex;align-items:flex-start;gap:8px;max-width:100%}
-.ai-m-u{flex-direction:row-reverse}
-.ai-av{width:26px;height:26px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:1px}
-.ai-av-ai{background:linear-gradient(135deg,var(--gd),#b97a00);color:#000}
-.ai-av-u{background:var(--b5);color:var(--t1)}
-.ai-bbl{padding:.6rem .85rem;border-radius:8px;font-size:12.5px;line-height:1.75;word-break:break-word;max-width:86%}
-.ai-bbl-ai{background:#162030;border:1px solid var(--e1);color:var(--t0);border-top-left-radius:2px}
-.ai-bbl-u{background:linear-gradient(135deg,#1a3a5c,#112040);border:1px solid var(--e2);color:var(--t0);border-top-right-radius:2px}
-.ai-meta{font-size:10px;color:var(--t2);margin-top:3px;display:flex;gap:8px;align-items:center;font-family:var(--fm)}
-.ai-copy{background:transparent;border:none;color:var(--t2);cursor:pointer;font-size:12px;padding:1px 4px;border-radius:3px;transition:color .1s}
-.ai-copy:hover{color:var(--gd)}
-/* 마크다운 */
-.ai-bbl-ai strong{color:var(--gd)}
-.ai-bbl-ai em{color:var(--tl)}
-.ai-bbl-ai code{font-family:var(--fm);font-size:11px;background:rgba(255,255,255,.06);padding:1px 5px;border-radius:3px;color:var(--tl)}
-.ai-bbl-ai h3{font-size:12.5px;color:var(--gdt);margin:7px 0 3px;font-weight:700}
-.ai-bbl-ai blockquote{border-left:3px solid var(--gd);padding-left:9px;color:var(--t1);margin:5px 0;font-style:italic}
-.ai-bbl-ai ul,.ai-bbl-ai ol{padding-left:15px;margin:4px 0}
-.ai-bbl-ai li{margin:2px 0}
-/* 타이핑 */
-.ai-dots{display:flex;gap:4px;padding:6px 4px}
-.ai-dots span{width:6px;height:6px;border-radius:50%;background:var(--gd);opacity:.35;animation:aidot 1.2s ease-in-out infinite}
-.ai-dots span:nth-child(2){animation-delay:.2s}
-.ai-dots span:nth-child(3){animation-delay:.4s}
-@keyframes aidot{0%,80%,100%{opacity:.35;transform:scale(1)}40%{opacity:1;transform:scale(1.25)}}
-.ai-cursor{display:inline-block;width:2px;height:13px;background:var(--gd);margin-left:2px;vertical-align:middle;animation:aicur .55s infinite}
-@keyframes aicur{0%,100%{opacity:1}50%{opacity:0}}
-.ai-disc{font-size:10px;color:var(--t2);padding:.5rem .85rem;border-top:1px solid var(--e0);flex-shrink:0;text-align:center;font-family:var(--fm);background:rgba(0,0,0,.2)}
-#ai-inp-area{padding:.65rem .85rem;border-top:1px solid var(--e0);flex-shrink:0;background:#060e18}
-#ai-inp-row{display:flex;gap:7px;align-items:flex-end}
-#ai-inp{flex:1;resize:none;min-height:36px;max-height:100px;padding:8px 10px;line-height:1.5;border:1px solid var(--e1);background:var(--b5);color:var(--t0);border-radius:6px;font-size:12px;transition:border-color .12s}
-#ai-inp:focus{outline:none;border-color:var(--gd)}
-#ai-send{width:36px;height:36px;flex-shrink:0;background:var(--gd);color:#000;border:none;border-radius:6px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;transition:opacity .12s}
-#ai-send:hover{opacity:.85}
-#ai-send:disabled{opacity:.35;cursor:not-allowed}
-.ai-hint{font-size:10px;color:var(--t3);margin-top:4px;font-family:var(--fm);display:flex;align-items:center;justify-content:space-between}
-/* FAB */
-#ai-fab{
-  position:fixed;right:18px;bottom:22px;
-  width:52px;height:52px;border-radius:50%;
-  background:linear-gradient(135deg,var(--gd),#b97a00);
-  color:#000;border:none;cursor:pointer;font-size:22px;
-  display:flex;align-items:center;justify-content:center;
-  z-index:98;box-shadow:0 4px 22px rgba(240,165,0,.5);
-  transition:transform .2s,box-shadow .2s;
-}
-#ai-fab:hover{transform:scale(1.1);box-shadow:0 6px 30px rgba(240,165,0,.65)}
-#ai-fab-n{
-  position:absolute;top:-3px;right:-3px;width:18px;height:18px;
-  border-radius:50%;background:var(--up);color:#fff;
-  font-size:9px;font-weight:700;display:flex;align-items:center;justify-content:center;
-  border:2px solid var(--b0);font-family:var(--fm);
-}
 
 /* ══════════ 토스트 ══════════ */
 #toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--b4);color:var(--gd);border:1px solid var(--gd);padding:7px 18px;border-radius:3px;font-size:12px;font-family:var(--fm);z-index:9999;opacity:0;transition:opacity .2s;pointer-events:none;white-space:nowrap;box-shadow:0 4px 20px rgba(0,0,0,.5)}
@@ -448,8 +362,8 @@ select option{background:var(--b3)}
     <div class="sb-logo-sub" id="sb-date">— 투자 도우미</div>
   </div>
   <div class="sb-mkt">
-    <div class="mkt-r"><span class="mkt-n">KOSPI <span class="live-badge sample" title="예시 데이터 (실시간 아님)"></span></span><span class="mkt-v up">2,618</span><span class="mkt-c up">▲0.42%</span></div>
-    <div class="mkt-r"><span class="mkt-n">KOSDAQ <span class="live-badge sample" title="예시 데이터 (실시간 아님)"></span></span><span class="mkt-v up">740.2</span><span class="mkt-c up">▲0.42%</span></div>
+    <div class="mkt-r"><span class="mkt-n">KOSPI <span class="live-badge pending" id="lb-kospi-sb" title="실시간 시세 조회 중..."></span></span><span class="mkt-v up" id="sb-kospi">8,500</span><span class="mkt-c up" id="sb-kospi-c">▲1.20%</span></div>
+    <div class="mkt-r"><span class="mkt-n">KOSDAQ <span class="live-badge pending" id="lb-kosdaq-sb" title="실시간 시세 조회 중..."></span></span><span class="mkt-v up" id="sb-kosdaq">1,200</span><span class="mkt-c up" id="sb-kosdaq-c">▲0.55%</span></div>
     <div class="mkt-r"><span class="mkt-n">S&P500 <span class="live-badge sample" title="예시 데이터 (실시간 아님)"></span></span><span class="mkt-v dn">5,218</span><span class="mkt-c dn">▼0.18%</span></div>
     <div class="mkt-r"><span class="mkt-n">USD/KRW <span class="live-badge pending" id="lb-fx-sb" title="실시간 환율 조회 중..."></span></span><span class="mkt-v nu" id="sb-fx">1,381</span><span class="mkt-c nu" id="sb-fxc">—</span></div>
     <div class="mkt-r"><span class="mkt-n" style="color:var(--gdt)">🥇 금 <span class="live-badge pending" id="lb-gold-sb" title="실시간 시세 조회 중... (PAXG 기준)"></span></span><span class="mkt-v" style="color:var(--gdt)" id="sb-gold">$3,248</span><span class="mkt-c up" id="sb-gold-c">▲0.38%</span></div>
@@ -472,7 +386,6 @@ select option{background:var(--b3)}
   </div>
   <div class="nb-g">
     <div class="nb-l">도구</div>
-    <button class="nb-b" data-s="ai"><i class="ti ti-robot"></i><span>AI 상담</span></button>
     <button class="nb-b" data-s="fx"><i class="ti ti-currency-won"></i><span>환율 계산기</span></button>
     <button class="nb-b" data-s="divi"><i class="ti ti-calendar-event"></i><span>배당 달력</span></button>
     <button class="nb-b" data-s="alarm"><i class="ti ti-bell"></i><span>관심 가격대</span></button>
@@ -493,7 +406,7 @@ select option{background:var(--b3)}
       <span class="pg-ti" id="pg-ti">대시보드</span>
     </div>
     <div class="tb-r">
-      <span class="chip c-up">KOSPI ▲0.42%</span>
+      <span class="chip c-up" id="tb-kospi">KOSPI ▲1.20%</span>
       <span class="chip c-dn">NASDAQ ▼0.18%</span>
       <span class="chip c-gd" id="tb-fx">USD 1,381</span>
       <span class="tb-cl" id="tb-cl"></span>
@@ -527,8 +440,8 @@ select option{background:var(--b3)}
         <div class="c-body" id="h-news"></div>
       </div>
       <div class="card">
-        <div class="card-hd"><div class="ct"><i class="ti ti-school"></i>초보자 가이드</div></div>
-        <div class="c-body" style="display:flex;flex-direction:column;gap:7px" id="h-guide"></div>
+        <div class="card-hd"><div class="ct"><i class="ti ti-bell"></i>관심 가격대 현황</div><span class="ca" onclick="nav('alarm')">전체 →</span></div>
+        <div class="c-body" id="h-alarms"></div>
       </div>
     </div>
     <div class="card">
@@ -547,14 +460,14 @@ select option{background:var(--b3)}
       </div>
     </div>
     <div class="mg">
-      <div class="mc mc-tl"><div class="ml">코스피</div><div class="mv up">2,618</div><div class="ms up">▲ 0.42%</div></div>
-      <div class="mc mc-tl"><div class="ml">코스닥</div><div class="mv up">740.2</div><div class="ms up">▲ 0.42%</div></div>
+      <div class="mc mc-tl"><div class="ml">코스피 <span class="live-badge pending" id="lb-kospi-k" title="실시간 시세 조회 중..."></span></div><div class="mv up" id="k-kospi">8,500</div><div class="ms up" id="k-kospi-c">▲ 1.20%</div></div>
+      <div class="mc mc-tl"><div class="ml">코스닥 <span class="live-badge pending" id="lb-kosdaq-k" title="실시간 시세 조회 중..."></span></div><div class="mv up" id="k-kosdaq">1,200</div><div class="ms up" id="k-kosdaq-c">▲ 0.55%</div></div>
       <div class="mc"><div class="ml">거래대금</div><div class="mv nu">9.2조</div><div class="ms nu">전일比 +12%</div></div>
       <div class="mc mc-up"><div class="ml">외국인</div><div class="mv up">+1,230억</div><div class="ms up">순매수</div></div>
       <div class="mc mc-dn"><div class="ml">기관</div><div class="mv dn">-840억</div><div class="ms dn">순매도</div></div>
       <div class="mc"><div class="ml">공포·탐욕</div><div class="mv" style="color:var(--gdt)">62</div><div class="ms" style="color:var(--gdt)">탐욕 구간</div></div>
     </div>
-    <div class="card"><div class="card-hd"><div class="ct"><i class="ti ti-chart-line"></i>코스피 추이 (최근 20거래일 · 샘플)</div></div><div class="c-body"><div style="position:relative;height:170px"><canvas id="ch-korea"></canvas></div></div></div>
+    <div class="card"><div class="card-hd"><div class="ct"><i class="ti ti-chart-line"></i>코스피 추이 (최근 20거래일)</div><span class="live-badge sample" id="lb-kospi-chart" title="예시 추이 데이터"></span></div><div class="c-body"><div style="position:relative;height:170px"><canvas id="ch-korea"></canvas></div></div></div>
     <div class="g2">
       <div class="card"><div class="card-hd"><div class="ct"><i class="ti ti-grid-dots"></i>업종별 등락</div></div><div class="c-body"><div class="hmap" id="k-hmap"></div></div></div>
       <div class="card"><div class="card-hd"><div class="ct"><i class="ti ti-trending-up"></i>주요 종목</div></div><div class="c-body"><div class="tl" id="k-stocks"></div></div></div>
@@ -592,7 +505,7 @@ select option{background:var(--b3)}
     <div class="card"><div class="card-hd"><div class="ct"><i class="ti ti-tags"></i>테마 선택</div><span style="font-size:10px;color:var(--t2)">클릭 → AI 즉시 분석</span></div><div class="c-body"><div class="ttags" id="t-tags"></div></div></div>
     <div class="g2">
       <div class="card"><div class="card-hd"><div class="ct"><i class="ti ti-gauge"></i>모멘텀 점수</div></div><div class="c-body" id="t-mom"><div class="aip" style="font-size:12px">← 테마를 선택해 주세요</div></div></div>
-      <div class="card"><div class="card-hd"><div class="ct"><i class="ti ti-robot"></i>AI 분석</div><button class="btn btn-xs btn-gd" onclick="aiAsk(currentTheme?currentTheme+'테마 주식 분석해줘':'테마를 먼저 선택하세요')"><i class="ti ti-send"></i>AI에게 더 묻기</button></div><div class="c-body"><div class="aibox" id="t-ai"><span class="aip">테마를 선택하면 배경·수혜주·리스크를 분석합니다.</span></div></div></div>
+      <div class="card"><div class="card-hd"><div class="ct"><i class="ti ti-bulb"></i>테마 분석</div></div><div class="c-body"><div class="aibox" id="t-ai"><span class="aip">테마를 선택하면 배경·수혜주·리스크를 분석합니다.</span></div></div></div>
     </div>
     <div class="card"><div class="card-hd"><div class="ct"><i class="ti ti-list"></i>관련 종목</div></div><div class="c-body"><div class="tl" id="t-stks"><div style="font-size:12px;color:var(--t2)">테마를 선택하면 표시됩니다.</div></div></div></div>
     <div class="card"><div class="card-hd"><div class="ct"><i class="ti ti-chart-radar"></i>전체 테마 모멘텀</div></div><div class="c-body"><div style="position:relative;height:230px"><canvas id="ch-radar"></canvas></div></div></div>
@@ -677,7 +590,7 @@ select option{background:var(--b3)}
       <div class="card"><div class="card-hd"><div class="ct"><i class="ti ti-calendar"></i>남은 기간 분석</div></div><div class="c-body" id="g-tl"><div class="aip" style="font-size:12px">목표를 설정하면 분석이 표시됩니다.</div></div></div>
       <div class="card"><div class="card-hd"><div class="ct"><i class="ti ti-chart-line"></i>목표 달성 시뮬레이션</div></div><div class="c-body"><div style="position:relative;height:170px"><canvas id="ch-goal"></canvas></div></div></div>
     </div>
-    <div class="card"><div class="card-hd"><div class="ct"><i class="ti ti-bulb"></i>AI 맞춤 조언</div><button class="btn btn-xs btn-gd" onclick="aiAsk('내 투자 목표 달성을 위한 구체적인 전략을 알려줘')"><i class="ti ti-robot"></i>AI 상세 조언</button></div><div class="c-body"><div class="aibox" id="g-adv"><span class="aip">목표를 설정하면 맞춤 조언이 표시됩니다.</span></div></div></div>
+    <div class="card"><div class="card-hd"><div class="ct"><i class="ti ti-bulb"></i>맞춤 조언</div></div><div class="c-body"><div class="aibox" id="g-adv"><span class="aip">목표를 설정하면 맞춤 조언이 표시됩니다.</span></div></div></div>
   </section>
 
   <!-- ══ 8. 포트폴리오 ══════════════════════════════ -->
@@ -691,15 +604,6 @@ select option{background:var(--b3)}
     <div class="g2">
       <div class="card"><div class="card-hd"><div class="ct"><i class="ti ti-list-check"></i>추천 포트폴리오</div></div><div class="c-body" id="pf-list"></div></div>
       <div class="card"><div class="card-hd"><div class="ct"><i class="ti ti-chart-donut"></i>자산 배분</div></div><div class="c-body"><div style="position:relative;height:195px"><canvas id="ch-pf"></canvas></div><div class="legend" id="pf-leg"></div></div></div>
-    </div>
-    <div class="card">
-      <div class="card-hd"><div class="ct"><i class="ti ti-robot"></i>AI 포트폴리오 상담</div></div>
-      <div class="c-body" style="display:grid;grid-template-columns:1fr 1fr;gap:7px">
-        <button class="btn" onclick="aiAsk('500만원 초보 투자자를 위한 ETF 포트폴리오를 짜줘')">ETF 포트폴리오 추천 →</button>
-        <button class="btn" onclick="aiAsk('ISA 계좌 배당주 투자 전략 알려줘')">ISA 배당주 전략 →</button>
-        <button class="btn" onclick="aiAsk('코스피200 ETF와 S&P500 ETF 비율을 어떻게 할까?')">ETF 배분 비율 →</button>
-        <button class="btn" onclick="aiAsk('적립식 투자 vs 거치식 투자 차이와 장단점을 알려줘')">적립식 vs 거치식 →</button>
-      </div>
     </div>
   </section>
 
@@ -719,16 +623,6 @@ select option{background:var(--b3)}
 
   <!-- ══ 10. AI 상담 ══════════════════════════════ -->
   <section class="sec" id="sec-ai">
-    <div class="card" style="background:linear-gradient(135deg,#0d1929,#0d2040);border-color:var(--gd)">
-      <div class="c-body" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">
-        <div>
-          <div style="font-size:13px;font-weight:700;color:var(--gd)">🤖 인앱 AI 분석가</div>
-          <div style="font-size:11px;color:var(--t1);margin-top:3px">Claude Sonnet 직접 연결 · 스트리밍 응답 · 대화 내역 유지</div>
-        </div>
-        <button class="btn btn-gd" onclick="aiAsk('')" style="font-weight:700"><i class="ti ti-robot"></i>AI 분석가 열기</button>
-      </div>
-    </div>
-    <div class="card"><div class="card-hd"><div class="ct"><i class="ti ti-send"></i>빠른 질문</div></div><div class="c-body" style="display:grid;grid-template-columns:1fr 1fr;gap:6px" id="ai-quick"></div></div>
     <div class="g2">
       <div class="card"><div class="card-hd"><div class="ct"><i class="ti ti-chart-pie"></i>투자 성향</div></div><div class="c-body" style="display:flex;flex-direction:column;gap:8px" id="ai-prof"></div></div>
       <div class="card"><div class="card-hd"><div class="ct"><i class="ti ti-vocabulary"></i>주식 용어 사전</div></div><div class="c-body" style="display:grid;grid-template-columns:1fr 1fr;gap:5px" id="ai-terms"></div></div>
@@ -864,37 +758,13 @@ select option{background:var(--b3)}
         <div style="flex:1;min-width:150px" id="s-bkdn"></div>
       </div>
     </div>
-    <div class="card" id="api-key-card">
-      <div class="card-hd">
-        <div class="ct"><i class="ti ti-key"></i>AI 분석 — Claude API 키</div>
-        <span class="chip" id="api-key-status" style="font-size:10px"></span>
-      </div>
-      <div class="c-body">
-        <div style="font-size:11.5px;color:var(--t1);line-height:1.7;margin-bottom:10px">
-          이 앱을 GitHub Pages 등 외부에 배포해서 쓰는 경우, <strong style="color:var(--gdt)">인앱 AI 분석가</strong> 기능은
-          본인의 Anthropic API 키가 있어야 작동합니다. (Claude.ai 내부에서 직접 쓸 때는 필요 없습니다.)
-        </div>
-        <div class="irow" style="margin-bottom:8px">
-          <input type="password" id="api-key-input" placeholder="sk-ant-api03-...">
-          <button class="btn btn-sm" onclick="toggleKeyVisibility()" id="api-key-toggle"><i class="ti ti-eye"></i></button>
-          <button class="btn btn-sm btn-gd" onclick="saveApiKey()"><i class="ti ti-check"></i>저장</button>
-        </div>
-        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px">
-          <button class="btn btn-sm btn-danger" onclick="clearApiKey()"><i class="ti ti-trash"></i>키 삭제</button>
-          <a class="btn btn-sm" href="https://console.anthropic.com/settings/keys" target="_blank" rel="noopener"><i class="ti ti-external-link"></i>API 키 발급받기</a>
-        </div>
-        <div style="font-size:10.5px;color:var(--t2);line-height:1.8;padding:8px 10px;background:var(--b0);border:1px solid var(--e0);border-radius:var(--r)">
-          ⚠️ <strong>주의</strong> — API 키는 이 브라우저의 localStorage에만 저장되며 서버로 전송되지 않습니다. 다만 본인 PC/브라우저에 저장되는 것이므로
-          공용 컴퓨터에서는 사용 후 <strong>키 삭제</strong>를 눌러 주세요. API 사용량에 따라 Anthropic 계정에 <strong>비용이 청구</strong>될 수 있습니다.
-        </div>
-      </div>
-    </div>
     <div class="card">
       <div class="card-hd"><div class="ct"><i class="ti ti-database-export"></i>시세 데이터 출처 안내</div></div>
       <div class="c-body">
         <div style="font-size:11.5px;color:var(--t1);line-height:1.7;margin-bottom:10px">
-          무료로 안정적으로 제공되는 데이터는 <span class="live-badge live" style="margin:0 2px"></span><strong style="color:var(--tl)">실시간</strong>으로 연동했고,
-          코스피·코스닥·미국 주가지수 등은 무료 실시간 API가 마땅치 않아 <span class="live-badge sample" style="margin:0 2px"></span><strong style="color:var(--t1)">예시 데이터</strong>로 표시됩니다.
+          무료로 안정적으로 제공되는 데이터는 <span class="live-badge live" style="margin:0 2px"></span><strong style="color:var(--tl)">실시간</strong>으로 연동했습니다.
+          코스피·코스닥은 <span class="live-badge pending" style="margin:0 2px"></span><strong style="color:var(--gdt)">실시간 시도</strong> 중이며, 브라우저/네트워크 환경에 따라 조회가 차단될 경우
+          <span class="live-badge sample" style="margin:0 2px"></span><strong style="color:var(--t1)">예시 데이터</strong>(2026-06-14 기준 ▲8,500 근사치)로 자동 전환됩니다.
           좌측 사이드바·대시보드의 작은 점이 상태를 나타냅니다.
         </div>
         <table class="tbl">
@@ -903,15 +773,15 @@ select option{background:var(--b3)}
             <tr><td>USD/KRW 환율</td><td><span class="live-badge live" style="margin:0"></span> 실시간</td><td style="color:var(--t2)">ExchangeRate-API (무료, 5분마다 갱신)</td></tr>
             <tr><td>비트코인 · 이더리움</td><td><span class="live-badge live" style="margin:0"></span> 실시간</td><td style="color:var(--t2)">CoinGecko (무료, 5분마다 갱신)</td></tr>
             <tr><td>금(Gold)</td><td><span class="live-badge live" style="margin:0"></span> 실시간(근사)</td><td style="color:var(--t2)">CoinGecko PAXG 토큰 가격 — 실제 금 시세와 소폭 차이 가능</td></tr>
-            <tr><td>코스피·코스닥</td><td><span class="live-badge sample" style="margin:0"></span> 예시</td><td style="color:var(--t2)">KRX 무료 실시간 API 부재</td></tr>
+            <tr><td>코스피·코스닥</td><td><span class="live-badge pending" style="margin:0"></span> 실시간 시도</td><td style="color:var(--t2)">Yahoo Finance (^KS11/^KQ11) — 차단 시 예시값(8,500 / 1,200)으로 대체</td></tr>
             <tr><td>S&P500·나스닥·다우·VIX·10Y금리</td><td><span class="live-badge sample" style="margin:0"></span> 예시</td><td style="color:var(--t2)">무료+CORS+키없는 API 부재</td></tr>
             <tr><td>개별 종목 (Mag7, 국내 종목 등)</td><td><span class="live-badge sample" style="margin:0"></span> 예시</td><td style="color:var(--t2)">유료 API 또는 백엔드 프록시 필요</td></tr>
             <tr><td>은(Silver)·WTI·엔/달러</td><td><span class="live-badge sample" style="margin:0"></span> 예시</td><td style="color:var(--t2)">무료 실시간 API 부재</td></tr>
           </tbody>
         </table>
         <div style="font-size:10.5px;color:var(--t2);line-height:1.8;margin-top:10px;padding:8px 10px;background:var(--b0);border:1px solid var(--e0);border-radius:var(--r)">
-          💡 코스피·나스닥 등을 실시간으로 보려면 보통 <strong>유료 시세 API</strong>(예: 한국투자증권 OpenAPI, Alpha Vantage, Twelve Data)를 발급받아 연동하거나,
-          CORS를 우회하는 <strong>백엔드 프록시 서버</strong>를 별도로 구축해야 합니다. 정확한 실시간 시세가 필요하다면 증권사 앱·HTS를 함께 확인하세요.
+          💡 코스피·코스닥 실시간 조회가 자주 실패한다면, 브라우저 광고차단기/추적방지 기능이 외부 API 요청을 막고 있을 수 있습니다. 일시적으로 끄고 새로고침 해보세요.
+          S&P500·나스닥 등을 실시간으로 보려면 보통 <strong>유료 시세 API</strong>(Alpha Vantage, Twelve Data 등)를 발급받아 연동해야 합니다.
         </div>
       </div>
     </div>
@@ -930,54 +800,6 @@ select option{background:var(--b3)}
 </div><!-- /main -->
 </div><!-- /body -->
 
-<!-- ══ AI 드로어 ════════════════════════════════════ -->
-<div id="ai-overlay" onclick="closeAI()"></div>
-<div id="ai-drawer">
-  <div id="ai-hd">
-    <div class="ai-hl">
-      <div class="ai-av0">AI</div>
-      <div><div class="ai-ht">StockAI 분석가</div><div class="ai-hs">Claude Sonnet · 인앱 AI</div></div>
-    </div>
-    <div style="display:flex;align-items:center;gap:6px">
-      <span class="ai-badge">claude-sonnet</span>
-      <button class="ai-icon-btn" onclick="clearAI()" title="대화 초기화"><i class="ti ti-refresh"></i></button>
-      <button class="ai-icon-btn" onclick="closeAI()"><i class="ti ti-x"></i></button>
-    </div>
-  </div>
-  <div id="ai-qbar">
-    <button class="ai-qc" onclick="aiAsk('삼성전자 현재 매수 타이밍인가요?')">삼성전자 분석</button>
-    <button class="ai-qc" onclick="aiAsk('오늘 코스피 시장 분위기 분석해줘')">오늘 시장</button>
-    <button class="ai-qc" onclick="aiAsk('금 가격 상승이 주식에 미치는 영향은?')">금·주식 관계</button>
-    <button class="ai-qc" onclick="aiAsk('비트코인과 주식 같이 투자하면 어때?')">코인+주식</button>
-    <button class="ai-qc" onclick="aiAsk('ETF 초보자 투자 방법을 알려줘')">ETF 입문</button>
-    <button class="ai-qc" onclick="aiAsk('500만원 초보 투자자 포트폴리오 추천해줘')">포트폴리오</button>
-    <button class="ai-qc" onclick="aiAsk('방산주 지금도 사도 될까?')">방산주 전망</button>
-    <button class="ai-qc" onclick="aiAsk('PER, PBR, EPS를 쉽게 설명해줘')">기초 개념</button>
-  </div>
-  <div id="ai-msgs">
-    <div class="ai-mwrap">
-      <div class="ai-m">
-        <div class="ai-av ai-av-ai">AI</div>
-        <div style="flex:1">
-          <div class="ai-bbl ai-bbl-ai">안녕하세요! 저는 <strong>StockAI 분석가</strong>입니다. 🎯<br><br>주식·ETF·원자재·가상자산 등 투자와 관련된 무엇이든 질문해 주세요.<br><br>위의 빠른 질문 칩을 누르거나 직접 입력하셔도 됩니다.<br><br><code>⚠️ 투자 판단은 반드시 본인이 직접 하세요.</code></div>
-          <div class="ai-meta"><span style="font-family:var(--fm);font-size:10px">StockAI</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="ai-disc">⚠️ AI 분석은 참고용이며 투자 권유가 아닙니다. 실제 투자 결정은 본인 책임입니다.</div>
-  <div id="ai-inp-area">
-    <div id="ai-inp-row">
-      <textarea id="ai-inp" placeholder="종목명, 시황, 전략 등 무엇이든 질문하세요..." rows="1"></textarea>
-      <button id="ai-send" onclick="aiSend()"><i class="ti ti-send"></i></button>
-    </div>
-    <div class="ai-hint">
-      <span>Enter↵ 전송 · Shift+Enter 줄바꿈</span>
-      <button onclick="clearAI()" style="background:transparent;border:none;color:var(--t2);cursor:pointer;font-size:10px;font-family:var(--fm)">🔄 초기화</button>
-    </div>
-  </div>
-</div>
-<button id="ai-fab" onclick="aiAsk('')" title="AI 분석가 열기 (단축키: Alt+A)"><i class="ti ti-robot"></i><span id="ai-fab-n">AI</span></button>
 <div id="toast"></div>
 
 </div><!-- /app -->
@@ -1013,7 +835,7 @@ function fmtW(n){n=parseInt(n)||0;if(n>=100000000)return(n/100000000).toFixed(2)
 function fmtWL(n){return(parseInt(n)||0).toLocaleString()+'원'}
 
 /* ── Navigation ── */
-const TITLES={home:'대시보드',korea:'국내 시장',us:'미국 시장',theme:'테마 분석',news:'뉴스피드',journal:'매매 일지',goal:'목표 트래커',portfolio:'포트폴리오',watch:'관심 종목',ai:'AI 상담',fx:'환율 계산기',divi:'배당 달력',alarm:'관심 가격대',settings:'환경설정'};
+const TITLES={home:'대시보드',korea:'국내 시장',us:'미국 시장',theme:'테마 분석',news:'뉴스피드',journal:'매매 일지',goal:'목표 트래커',portfolio:'포트폴리오',watch:'관심 종목',fx:'환율 계산기',divi:'배당 달력',alarm:'관심 가격대',settings:'환경설정'};
 const chartDone=new Set();
 function nav(id){
   document.querySelectorAll('.sec').forEach(s=>s.classList.remove('on'));
@@ -1128,6 +950,88 @@ fetchCrypto();
 setInterval(fetchCrypto,5*60*1000);
 setInterval(fetchFX,5*60*1000);
 
+/* ── 코스피·코스닥 실시간 시도 (Yahoo Finance — 무료/키 불필요, 단 CORS 정책에 따라 차단될 수 있음)
+   실패 시 2026-06-14 기준 예시값(코스피 8,500 / 코스닥 1,200)으로 자동 유지 ── */
+async function fetchIndices(){
+  const idxBadges=['lb-kospi-sb','lb-kospi','lb-kospi-k','lb-kosdaq-sb','lb-kosdaq','lb-kosdaq-k'];
+  const symbols=[
+    {sym:'%5EKS11', name:'코스피',
+     valIds:['sb-kospi','h-kospi','k-kospi'], chgIds:['sb-kospi-c','h-kospi-c','k-kospi-c'],
+     badgeIds:['lb-kospi-sb','lb-kospi','lb-kospi-k'], decimals:0},
+    {sym:'%5EKQ11', name:'코스닥',
+     valIds:['sb-kosdaq','h-kosdaq','k-kosdaq'], chgIds:['sb-kosdaq-c','h-kosdaq-c','k-kosdaq-c'],
+     badgeIds:['lb-kosdaq-sb','lb-kosdaq','lb-kosdaq-k'], decimals:1},
+  ];
+  let anySuccess=false;
+  for(const s of symbols){
+    try{
+      const r=await fetch(`https://query1.finance.yahoo.com/v8/finance/chart/${s.sym}?interval=1d&range=2d`);
+      if(!r.ok)throw new Error('HTTP '+r.status);
+      const d=await r.json();
+      const result=d?.chart?.result?.[0];
+      const price=result?.meta?.regularMarketPrice;
+      const prevClose=result?.meta?.previousClose ?? result?.meta?.chartPreviousClose;
+      if(price==null || prevClose==null)throw new Error('데이터 없음');
+
+      const chgPct=((price-prevClose)/prevClose)*100;
+      const valStr=s.decimals===0?Math.round(price).toLocaleString():price.toFixed(s.decimals);
+      setVal(s.valIds, valStr);
+      setChg(s.chgIds, chgPct);
+      setBadge(s.badgeIds,'live',`실시간 시세 (Yahoo Finance) — ${new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'})} 기준`);
+
+      // topbar KOSPI 칩 갱신
+      if(s.name==='코스피'){
+        const chip=document.getElementById('tb-kospi');
+        if(chip){
+          chip.textContent=`KOSPI ${chgPct>=0?'▲':'▼'}${Math.abs(chgPct).toFixed(2)}%`;
+          chip.className='chip '+(chgPct>=0?'c-up':'c-dn');
+        }
+        // 티커바 KOSPI 항목 갱신
+        const tk=document.getElementById('tk');
+        if(tk){
+          const items=tk.querySelectorAll('.tk-item');
+          items.forEach(it=>{
+            const nm=it.querySelector('.tk-nm');
+            if(nm && nm.textContent==='KOSPI'){
+              it.querySelector('.tk-pv').textContent=valStr;
+              const chEl=it.querySelector('.tk-ch');
+              chEl.textContent=(chgPct>=0?'+':'')+chgPct.toFixed(2)+'%';
+              const cls=chgPct>=0?'up':'dn';
+              it.querySelector('.tk-pv').className='tk-pv '+cls;
+              chEl.className='tk-ch '+cls;
+            }
+          });
+        }
+      } else {
+        const tk=document.getElementById('tk');
+        if(tk){
+          const items=tk.querySelectorAll('.tk-item');
+          items.forEach(it=>{
+            const nm=it.querySelector('.tk-nm');
+            if(nm && nm.textContent==='KOSDAQ'){
+              it.querySelector('.tk-pv').textContent=valStr;
+              const chEl=it.querySelector('.tk-ch');
+              chEl.textContent=(chgPct>=0?'+':'')+chgPct.toFixed(2)+'%';
+              const cls=chgPct>=0?'up':'dn';
+              it.querySelector('.tk-pv').className='tk-pv '+cls;
+              chEl.className='tk-ch '+cls;
+            }
+          });
+        }
+      }
+      anySuccess=true;
+    }catch{
+      setBadge(s.badgeIds,'sample','실시간 조회 실패 — 예시 데이터(2026-06-14 기준) 표시 중');
+    }
+  }
+  // 코스피 추이 차트 라벨 갱신
+  const chartBadge=document.getElementById('lb-kospi-chart');
+  if(chartBadge && anySuccess){chartBadge.classList.remove('sample');chartBadge.classList.add('live');chartBadge.title='최신 시세는 실시간, 추이선은 예시'}
+  if(anySuccess)toast('코스피·코스닥 실시간 업데이트 ✓');
+}
+fetchIndices();
+setInterval(fetchIndices,5*60*1000);
+
 function convFX(from){
   const r=S.fx;
   if(from==='usd'){const u=parseFloat(document.getElementById('fx-usd').value)||0;document.getElementById('fx-krw').value=Math.round(u*r);document.getElementById('fx-res').innerHTML=`<strong>${u.toLocaleString()} USD</strong> = <strong class="up">${(u*r).toLocaleString()} KRW</strong><br><span style="color:var(--t2)">적용 환율: ${r.toLocaleString()}원</span>`}
@@ -1143,7 +1047,7 @@ function calcUS(){
 /* ════════════════════ DATA ════════════════════ */
 const D={
   tkItems:[
-    {n:'KOSPI',p:'2,618',c:'+0.42%',up:true},{n:'KOSDAQ',p:'740.2',c:'+0.42%',up:true},
+    {n:'KOSPI',p:'8,500',c:'+1.20%',up:true},{n:'KOSDAQ',p:'1,200',c:'+0.55%',up:true},
     {n:'S&P500',p:'5,218',c:'-0.18%',up:false},{n:'NASDAQ',p:'16,742',c:'-0.18%',up:false},
     {n:'DOW',p:'39,104',c:'+0.05%',up:true},{n:'🥇금',p:'$3,248',c:'+0.38%',up:true},
     {n:'🥈은',p:'$32.14',c:'-0.65%',up:false},{n:'🛢️WTI',p:'$77.82',c:'+0.70%',up:true},
@@ -1192,12 +1096,6 @@ const D={
     {t:'KB금융, 분기 배당 도입 검토… 주주환원 확대',s:'이데일리',tm:'07:50',tags:['배당']},
     {t:'삼성전자, 특별 자사주 소각 4조원 발표',s:'한국경제TV',tm:'06:20',tags:['배당','반도체']},
   ],
-  guide:[
-    {icon:'📚',t:'주식 기초 개념',d:'PER, PBR, EPS 이해하기',q:'주식 초보자가 꼭 알아야 할 기초 개념인 PER, PBR, EPS를 쉽게 설명해줘'},
-    {icon:'🏦',t:'ISA 세금 혜택',d:'비과세 200만원 혜택',q:'ISA 계좌의 세금 혜택을 구체적으로 알려줘'},
-    {icon:'💰',t:'500만원 투자 전략',d:'초보자 맞춤 상담',q:'500만원으로 주식 초보자가 시작할 수 있는 현실적인 투자 전략을 알려줘'},
-    {icon:'🌏',t:'국장 vs 미장',d:'어디서 시작할까?',q:'국내 주식과 미국 주식의 차이점과 초보자에게 어느 쪽이 좋은지 설명해줘'},
-  ],
   hmap:[{n:'반도체',v:2.8},{n:'2차전지',v:1.4},{n:'자동차',v:0.9},{n:'바이오',v:-0.4},{n:'금융',v:0.3},{n:'화학',v:-1.1},{n:'철강',v:0.6},{n:'방산',v:2.1},{n:'통신',v:0.1},{n:'유통',v:-0.7}],
   kStocks:[{n:'삼성전자',p:'76,200원',c:'+1.2%',up:true,d:'반도체'},{n:'SK하이닉스',p:'188,500원',c:'+2.8%',up:true,d:'HBM'},{n:'현대차',p:'241,000원',c:'+0.4%',up:true,d:'자동차'},{n:'카카오',p:'38,750원',c:'-0.9%',up:false,d:'플랫폼'},{n:'LG에너지솔루션',p:'312,000원',c:'-0.3%',up:false,d:'2차전지'},{n:'한화에어로스페이스',p:'328,000원',c:'+1.9%',up:true,d:'방산'}],
   m7:[{n:'NVIDIA',p:'$924',c:'+3.4%',up:true},{n:'Apple',p:'$189',c:'-0.6%',up:false},{n:'Microsoft',p:'$415',c:'+0.3%',up:true},{n:'Meta',p:'$492',c:'+1.1%',up:true},{n:'Alphabet',p:'$175',c:'-0.2%',up:false},{n:'Amazon',p:'$185',c:'+0.8%',up:true},{n:'Tesla',p:'$163',c:'-2.1%',up:false}],
@@ -1207,9 +1105,22 @@ const D={
   themeStocks:{'AI·반도체':['삼성전자','SK하이닉스','한미반도체','리노공업'],'2차전지':['LG에너지솔루션','삼성SDI','에코프로비엠','포스코퓨처엠'],'방산·우주':['한화에어로스페이스','현대로템','LIG넥스원','한국항공우주'],'원전·에너지':['두산에너빌리티','한전기술','비에이치아이','LS ELECTRIC'],'바이오':['삼성바이오로직스','셀트리온','유한양행','한미약품'],'로봇·자동화':['레인보우로보틱스','에스피지','현대로보틱스','티로보틱스'],'K-콘텐츠':['하이브','SM엔터테인먼트','카카오엔터','CJ ENM'],'전기차':['현대차','기아','현대모비스','HL만도'],'조선':['HD현대중공업','삼성중공업','한화오션','HD현대미포'],'리튬·희토류':['포스코홀딩스','POSCO퓨처엠','에코프로','고려아연'],'클라우드':['네이버','카카오','더존비즈온','가비아'],'핀테크':['카카오페이','KG이니시스','NHN KCP','갤럭시아머니트리']},
   themeAI:{'AI·반도체':'HBM 메모리 수요가 엔비디아 GPU와 맞물려 폭증 중입니다. 삼성전자·SK하이닉스 모두 HBM3E 양산 중이며 한미반도체는 TC본더 독점 공급으로 수혜 예상. 단기 과열 주의, 분할 매수 권장합니다.','2차전지':'전기차 보급 둔화로 단기 조정 중이나 ESS 수요가 새 성장 동력으로 부상 중입니다. LFP 경쟁 심화 리스크 주의. 장기 관점 유효합니다.','방산·우주':'NATO 국방비 증가, K-방산 수출 지속으로 강세 유지. 외국인 순매수 3개월 연속. 실적 기반 안정적 상승 테마입니다.','원전·에너지':'AI 데이터센터 전력 수요 폭증으로 원전 르네상스. 두산에너빌리티 체코 수주 기대가 주가 모멘텀입니다.','바이오':'임상 결과 변수가 크고 개별 리스크가 높습니다. 삼성바이오로직스처럼 실적 기반 종목 위주, 신약 초기 기업은 ETF로 분산 접근을 권장합니다.','로봇·자동화':'테슬라 옵티머스, 현대차 보스턴다이내믹스로 로봇 섹터 급부상. 레인보우로보틱스 국내 주목 기업입니다.','기본':'선택하신 테마는 중간 수준의 모멘텀을 보이고 있습니다. 테마 ETF로 분산 접근을 먼저 고려해 보세요.'},
   themeMom:{'AI·반도체':88,'2차전지':52,'방산·우주':79,'원전·에너지':74,'바이오':45,'로봇·자동화':61,'K-콘텐츠':57,'전기차':49,'조선':68,'리튬·희토류':55,'클라우드':60,'핀테크':48},
-  aiQuick:['삼성전자 지금 사도 될까?','ETF가 뭔가요? 쉽게 설명해줘','PER, PBR, EPS 한방에 정리해줘','분산투자란 무엇인가요?','코스피200 ETF 추천해줘','미국주식 세금은 어떻게 내나요?','환율이 오르면 주식에 어떤 영향?','공매도가 뭔지 알려줘'],
   riskProfiles:[{l:'안정형',d:'원금 보존 우선. ETF·배당주. 목표 연 5~8%',on:true},{l:'균형형',d:'성장+안정 혼합. 목표 연 10%'},{l:'성장형',d:'성장주 집중. 변동성 감내. 목표 연 15%+'},{l:'공격형',d:'고위험 고수익. 초보자 비권장'}],
   terms:['PER','PBR','EPS','ROE','배당수익률','시가총액','공매도','ETF','코스피','코스닥','주식분할','액면가'],
+  termDefs:{
+    'PER':'주가를 1주당 순이익(EPS)으로 나눈 값. 낮을수록 주가가 이익 대비 저평가됐다는 의미입니다.',
+    'PBR':'주가를 1주당 순자산으로 나눈 값. 1 미만이면 회사 자산 가치보다 주가가 낮게 거래된다는 뜻입니다.',
+    'EPS':'주당순이익. 기업의 순이익을 발행주식 수로 나눈 값으로, 한 주가 벌어들이는 이익을 나타냅니다.',
+    'ROE':'자기자본이익률. 투입한 자본으로 얼마나 효율적으로 이익을 냈는지 보여주는 지표로, 높을수록 좋습니다.',
+    '배당수익률':'주가 대비 연간 배당금의 비율(%). 배당수익률 5%면 100만원 투자 시 연 5만원의 배당을 받는다는 의미입니다.',
+    '시가총액':'주가 × 발행주식 수. 기업의 전체 가치를 시장가격 기준으로 나타낸 값입니다.',
+    '공매도':'주식을 빌려서 먼저 판 뒤, 가격이 내리면 다시 사서 갚아 차익을 얻는 투자 방식. 가격 하락에 베팅하는 거래입니다.',
+    'ETF':'상장지수펀드. 여러 종목을 묶어 하나의 펀드로 만들어 거래소에서 주식처럼 매매할 수 있는 상품입니다.',
+    '코스피':'한국 대형 상장기업들로 구성된 종합 주가지수로, 한국 증시 전체의 흐름을 보여줍니다.',
+    '코스닥':'중소·벤처·기술주 중심의 한국 주식시장 지수로, 코스피보다 변동성이 큰 편입니다.',
+    '주식분할':'1주를 여러 주로 나누어 주당 가격을 낮추는 것. 회사 전체 가치는 그대로지만 거래 접근성이 높아집니다.',
+    '액면가':'주권에 표시된 명목상 가격. 실제 거래되는 시장가격과는 보통 차이가 있습니다.',
+  },
   pf:[{n:'코스피200 ETF',pct:30,w:'150만원',c:'#00c8a0'},{n:'미국 S&P500 ETF',pct:25,w:'125만원',c:'#5aa8ff'},{n:'국내 배당주',pct:20,w:'100만원',c:'#f0a500'},{n:'나스닥100 ETF',pct:15,w:'75만원',c:'#e03030'},{n:'현금 유보',pct:10,w:'50만원',c:'#4a6a88'}],
   divInfo:[{n:'삼성전자',r:'2.1%',f:'분기',m:'3·6·9·12월',note:'국내 최대 배당주'},{n:'SK텔레콤',r:'6.8%',f:'연 1회',m:'4월',note:'고배당 통신주'},{n:'KT&G',r:'5.9%',f:'연 1회',m:'4월',note:'안정적 현금흐름'},{n:'POSCO홀딩스',r:'4.2%',f:'반기',m:'4·10월',note:'철강·소재'},{n:'맥쿼리인프라',r:'7.5%',f:'반기',m:'4·10월',note:'인프라 배당'},{n:'현대차',r:'3.1%',f:'분기',m:'3·6·9·12월',note:'분기 배당 전환'},{n:'KB금융',r:'4.8%',f:'분기',m:'3·6·9·12월',note:'금융지주 배당'},{n:'TIGER원전인프라ETF',r:'약 1.5%',f:'월배당',m:'매월',note:'ETF 월배당'}],
   newsTabs:['전체','반도체','방산','바이오','2차전지','원전','미국','환율','금·원자재','가상자산','ETF','부동산','배당'],
@@ -1232,8 +1143,8 @@ function renderHome(){
   // metric grid 1 (market)
   document.getElementById('h-mg1').innerHTML=`
     <div class="mc mc-tl"><div class="ml">총 자산</div><div class="mv nu" id="h-total-val">${fmtW(tot)}</div><div class="ms nu">계좌 합산</div></div>
-    <div class="mc mc-tl"><div class="ml">코스피</div><div class="mv up">2,618</div><div class="ms up">▲ 0.42%</div></div>
-    <div class="mc mc-tl"><div class="ml">코스닥</div><div class="mv up">740.2</div><div class="ms up">▲ 0.42%</div></div>
+    <div class="mc mc-tl"><div class="ml">코스피 <span class="live-badge pending" id="lb-kospi" title="실시간 시세 조회 중..."></span></div><div class="mv up" id="h-kospi">8,500</div><div class="ms up" id="h-kospi-c">▲ 1.20%</div></div>
+    <div class="mc mc-tl"><div class="ml">코스닥 <span class="live-badge pending" id="lb-kosdaq" title="실시간 시세 조회 중..."></span></div><div class="mv up" id="h-kosdaq">1,200</div><div class="ms up" id="h-kosdaq-c">▲ 0.55%</div></div>
     <div class="mc"><div class="ml">S&P 500</div><div class="mv dn">5,218</div><div class="ms dn">▼ 0.18%</div></div>
     <div class="mc"><div class="ml">나스닥 100</div><div class="mv dn">16,742</div><div class="ms dn">▼ 0.18%</div></div>
     <div class="mc mc-gd"><div class="ml">원/달러</div><div class="mv nu" id="h-fx-val">${S.fx.toLocaleString()}</div><div class="ms nu" id="h-fx-sub-val">조회 중...</div></div>`;
@@ -1250,7 +1161,10 @@ function renderHome(){
   // news
   document.getElementById('h-news').innerHTML=D.news.slice(0,4).map(n=>`<div class="ni"><div class="nt">${n.t}</div><div class="nm"><span>${n.s}</span><span>${n.tm}</span></div></div>`).join('');
   // guide
-  document.getElementById('h-guide').innerHTML=D.guide.map(g=>`<button class="gcrd" onclick="aiAsk('${g.q.replace(/'/g,"\\'")}')"><span class="gi">${g.icon}</span><div><div class="gt">${g.t}</div><div class="gd">${g.d}</div></div><i class="ti ti-arrow-right" style="margin-left:auto;font-size:13px;color:var(--t2)"></i></button>`).join('');
+  const hAl=document.getElementById('h-alarms');
+  if(hAl){
+    hAl.innerHTML=S.alarms.length?S.alarms.slice(0,4).map(a=>`<div class="ali"><div class="ali-ico" style="background:${a.dir==='above'?'rgba(224,48,48,.12)':'rgba(29,121,242,.12)'};border-color:${a.dir==='above'?'var(--up)':'var(--dn)'}"><i class="ti ti-bell" style="font-size:14px;color:${a.dir==='above'?'var(--upt)':'var(--dnt)'}"></i></div><div class="ali-inf"><div class="ali-nm">${a.stk}</div><div class="ali-pr">${a.dir==='above'?'▲ '+parseInt(a.prc).toLocaleString()+'원 이상':'▼ '+parseInt(a.prc).toLocaleString()+'원 이하'}</div></div><span class="chip ${a.dir==='above'?'c-up':'c-dn'}" style="font-size:10px">${a.dir==='above'?'매수목표':'손절기준'}</span></div>`).join(''):'<div style="font-size:12px;color:var(--t2);padding:4px 0">등록된 관심 가격대가 없습니다.</div>';
+  }
   renderJrnPreview();
 }
 
@@ -1288,7 +1202,7 @@ function selTheme(t,btn){
   document.getElementById('t-mom').innerHTML=`<div style="display:flex;align-items:center;gap:12px;padding:4px 0"><div style="font-size:36px;font-weight:700;font-family:var(--fm);color:${col}">${score}</div><div style="flex:1"><div class="pw" style="height:10px"><div class="pb" style="width:${score}%;background:${col}"></div></div><div style="font-size:11px;color:var(--t1);margin-top:5px">${lbl} — <strong>${t}</strong></div></div></div>`;
   document.getElementById('t-ai').textContent=D.themeAI[t]||D.themeAI['기본'];
   const stks=D.themeStocks[t]||[];
-  document.getElementById('t-stks').innerHTML=stks.length?stks.map(s=>`<div class="tr"><div><div class="tn">${s}</div></div><button class="btn btn-xs" onclick="aiAsk('${s} 주식 현황과 투자 포인트 분석해줘')"><i class="ti ti-robot"></i>AI분석</button></div>`).join(''):'<div style="font-size:12px;color:var(--t2)">데이터 없음</div>';
+  document.getElementById('t-stks').innerHTML=stks.length?`<div class="ttags">${stks.map(s=>`<span class="ttag" style="cursor:default">${s}</span>`).join('')}</div>`:'<div style="font-size:12px;color:var(--t2)">데이터 없음</div>';
 }
 
 /* ── News ── */
@@ -1302,7 +1216,7 @@ function searchNews(){const q=document.getElementById('news-search').value.trim(
 function renderNews(){displayNews(newsFilter==='전체'?D.news:D.news.filter(n=>n.tags.includes(newsFilter)),newsFilter==='전체'?'전체':newsFilter)}
 function displayNews(list,label){
   const cnt=document.getElementById('news-cnt');if(cnt)cnt.textContent=`${label} — ${list.length}건`;
-  document.getElementById('news-list').innerHTML=list.length?list.map(n=>`<div class="ni"><div class="nt">${n.t}</div><div class="nm"><span style="color:var(--t1);font-weight:500">${n.s}</span><span>${n.tm}</span>${n.tags.map(t=>`<span class="chip c-nu" style="font-size:9.5px;padding:1px 6px">${D.newsIcons[t]||''}${t}</span>`).join('')}<button class="btn btn-xs" style="margin-left:auto;padding:1px 8px;font-size:10px" onclick="aiAsk('${n.t.replace(/'/g,"\\'")} 뉴스를 주식 투자 관점에서 분석해줘')">AI분석</button></div></div>`).join(''):'<div style="font-size:12px;color:var(--t2);padding:10px 0">해당 뉴스가 없습니다.</div>';
+  document.getElementById('news-list').innerHTML=list.length?list.map(n=>`<div class="ni"><div class="nt">${n.t}</div><div class="nm"><span style="color:var(--t1);font-weight:500">${n.s}</span><span>${n.tm}</span>${n.tags.map(t=>`<span class="chip c-nu" style="font-size:9.5px;padding:1px 6px">${D.newsIcons[t]||''}${t}</span>`).join('')}</div></div>`).join(''):'<div style="font-size:12px;color:var(--t2);padding:10px 0">해당 뉴스가 없습니다.</div>';
 }
 
 /* ── Journal ── */
@@ -1317,7 +1231,7 @@ function renderJournal(){
   const hmap={};
   S.trades.forEach(t=>{if(!hmap[t.stock])hmap[t.stock]={bq:0,sq:0,ba:0};if(t.type==='buy'){hmap[t.stock].bq+=t.qty;hmap[t.stock].ba+=t.qty*t.price}else hmap[t.stock].sq+=t.qty});
   const hlds=Object.entries(hmap).map(([n,v])=>({n,net:v.bq-v.sq,avg:v.bq?Math.round(v.ba/v.bq):0})).filter(h=>h.net>0);
-  document.getElementById('j-hold').innerHTML=hlds.length?`<table class="tbl"><thead><tr><th>종목</th><th>보유수량</th><th>평균단가</th><th>평가금액</th><th>AI 분석</th></tr></thead><tbody>${hlds.map(h=>`<tr><td><strong>${h.n}</strong></td><td>${h.net.toLocaleString()}주</td><td>${h.avg.toLocaleString()}원</td><td>${(h.net*h.avg).toLocaleString()}원</td><td><button class="btn btn-xs" onclick="aiAsk('${h.n} 주식 현재 시황과 향후 전망 분석해줘')">분석→</button></td></tr>`).join('')}</tbody></table>`:'<div style="font-size:12px;color:var(--t2)">보유 중인 종목이 없습니다.</div>';
+  document.getElementById('j-hold').innerHTML=hlds.length?`<table class="tbl"><thead><tr><th>종목</th><th>보유수량</th><th>평균단가</th><th>평가금액</th></tr></thead><tbody>${hlds.map(h=>`<tr><td><strong>${h.n}</strong></td><td>${h.net.toLocaleString()}주</td><td>${h.avg.toLocaleString()}원</td><td>${(h.net*h.avg).toLocaleString()}원</td></tr>`).join('')}</tbody></table>`:'<div style="font-size:12px;color:var(--t2)">보유 중인 종목이 없습니다.</div>';
   // list
   const el=document.getElementById('j-list');
   if(!S.trades.length){el.innerHTML='<div style="font-size:12px;color:var(--t2);padding:10px 0">아직 거래 내역이 없습니다.</div>';return}
@@ -1392,16 +1306,19 @@ function renderPortfolio(){
 /* ── Watchlist ── */
 function renderWatch(){
   const el=document.getElementById('w-list');
-  el.innerHTML=S.watch.length?S.watch.map((s,i)=>`<div class="tr"><div class="tn">${s}</div><div style="display:flex;gap:7px"><button class="btn btn-xs btn-gd" onclick="aiAsk('${s} 주식 현재 시황과 투자 포인트 분석해줘')"><i class="ti ti-robot"></i>AI분석</button><button class="btn btn-xs btn-danger" onclick="rmWatch(${i})"><i class="ti ti-x"></i></button></div></div>`).join(''):'<div style="font-size:12px;color:var(--t2)">관심 종목을 추가해 보세요.</div>';
+  el.innerHTML=S.watch.length?S.watch.map((s,i)=>`<div class="tr"><div class="tn">${s}</div><button class="btn btn-xs btn-danger" onclick="rmWatch(${i})"><i class="ti ti-x"></i> 삭제</button></div>`).join(''):'<div style="font-size:12px;color:var(--t2)">관심 종목을 추가해 보세요.</div>';
 }
 function addWatch(){const v=document.getElementById('w-inp').value.trim();if(!v)return;if(!S.watch.includes(v)){S.watch.push(v);sv('watch')}document.getElementById('w-inp').value='';renderWatch();toast(`${v} 관심 종목 추가`)}
 function rmWatch(i){S.watch.splice(i,1);sv('watch');renderWatch()}
 
 /* ── AI Section ── */
 function renderAISection(){
-  document.getElementById('ai-quick').innerHTML=D.aiQuick.map(q=>`<button class="btn" style="text-align:left;justify-content:flex-start;font-size:11.5px" onclick="aiAsk('${q.replace(/'/g,"\\'")}')"><i class="ti ti-send" style="color:var(--gd);font-size:12px"></i>${q}</button>`).join('');
   document.getElementById('ai-prof').innerHTML=D.riskProfiles.map((r,i)=>`<div style="padding:9px 12px;border-radius:var(--r);border:1px solid ${r.on?'var(--gd)':'var(--e1)'};background:${r.on?'rgba(240,165,0,.08)':'var(--b4)'};cursor:pointer" onclick="selProfile(this,${i})"><div style="font-size:12px;font-weight:600;color:${r.on?'var(--gdt)':'var(--t0)'}">${r.l}</div><div style="font-size:10.5px;color:var(--t2);margin-top:2px">${r.d}</div></div>`).join('');
-  document.getElementById('ai-terms').innerHTML=D.terms.map(t=>`<button class="btn btn-sm" style="justify-content:flex-start;gap:5px" onclick="aiAsk('${t}가 무엇인지 주식 초보자에게 쉽게 설명해줘')"><i class="ti ti-vocabulary" style="color:var(--gd);font-size:12px"></i>${t}</button>`).join('');
+  document.getElementById('ai-terms').innerHTML=D.terms.map(t=>`<button class="btn btn-sm" style="justify-content:flex-start;gap:5px" onclick="showTerm('${t}')"><i class="ti ti-vocabulary" style="color:var(--gd);font-size:12px"></i>${t}</button>`).join('');
+}
+function showTerm(t){
+  const def=D.termDefs[t]||'설명이 준비되지 않았습니다.';
+  toast(`${t}: ${def}`);
 }
 function selProfile(el,idx){D.riskProfiles.forEach((r,i)=>r.on=i===idx);renderAISection()}
 function calcR(){
@@ -1484,201 +1401,6 @@ function exportData(){const d={acc:S.acc,trades:S.trades,watch:S.watch,alarms:S.
 function importData(){const inp=document.createElement('input');inp.type='file';inp.accept='.json';inp.onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=ev=>{try{const d=JSON.parse(ev.target.result);if(d.acc){S.acc=d.acc;sv('acc')}if(d.trades){S.trades=d.trades;sv('trades')}if(d.watch){S.watch=d.watch;sv('watch')}if(d.alarms){S.alarms=d.alarms;sv('alarms')}if(d.goal){S.goal=d.goal;sv('goal')}initAll();toast('데이터 가져오기 완료 ✓')}catch{toast('파일 형식 오류')}};r.readAsText(f)};inp.click()}
 function resetAll(){if(!confirm('모든 데이터를 초기화하시겠습니까?'))return;['sa_acc','sa_trades','sa_watch','sa_alarms','sa_goal'].forEach(k=>localStorage.removeItem(k));location.reload()}
 
-/* ════════════════════ IN-APP AI (Claude API Streaming) ════════════════════ */
-let aiHistory=[];let aiTyping=false;
-
-function sysPrompt(){
-  const a=S.acc,tot=(a.bl1||0)+(a.bl2||0);
-  const hlds=(()=>{const m={};S.trades.forEach(t=>{if(!m[t.stock])m[t.stock]={b:0,s:0};m[t.stock][t.type==='buy'?'b':'s']+=t.qty});return Object.entries(m).filter(([,v])=>v.b-v.s>0).map(([n])=>n).join(', ')||'없음'})();
-  return`당신은 StockAI의 내장 AI 투자 분석가입니다. 한국 및 글로벌 금융시장 전문가로서 실용적이고 명확한 투자 정보를 제공합니다.
-
-## 현재 시장 현황 (샘플 데이터)
-- KOSPI: 2,618 (+0.42%) | KOSDAQ: 740.2 (+0.42%)
-- S&P500: 5,218 (-0.18%) | 나스닥: 16,742 (-0.18%)
-- 원/달러: ${S.fx.toLocaleString()}원 | 엔/달러: 155.4
-- 금: $3,248 (+0.38%) | WTI: $77.82 | BTC: $104,200
-
-## 사용자 프로필
-- 총 자산: ${fmtW(tot)} (${a.br1||'증권'} ${a.tp1||''})
-- 거래: ${S.trades.length}건 | 보유 종목: ${hlds}
-- 투자 성향: 안정형 (초보 투자자)
-
-## 답변 가이드라인
-1. 한국어, 초보자도 이해할 수 있게 쉽게 설명
-2. 구체적 숫자와 이유 제시
-3. 투자 위험과 주의사항 반드시 언급
-4. 마크다운(볼드, 리스트, 코드블록) 활용
-5. 마지막에 항상 "⚠️ 이 분석은 참고용이며 투자 결정은 본인이 직접 하세요." 추가`;
-}
-
-function openAI(q){
-  document.getElementById('ai-drawer').classList.add('open');
-  document.getElementById('ai-overlay').classList.add('show');
-  document.getElementById('ai-fab').style.display='none';
-  if(q){document.getElementById('ai-inp').value=q;setTimeout(aiSend,200)}
-  else setTimeout(()=>document.getElementById('ai-inp').focus(),350);
-}
-function closeAI(){
-  document.getElementById('ai-drawer').classList.remove('open');
-  document.getElementById('ai-overlay').classList.remove('show');
-  document.getElementById('ai-fab').style.display='flex';
-}
-function aiAsk(q){openAI(q)}
-
-function clearAI(){
-  aiHistory=[];
-  document.getElementById('ai-msgs').innerHTML=`<div class="ai-mwrap"><div class="ai-m"><div class="ai-av ai-av-ai">AI</div><div style="flex:1"><div class="ai-bbl ai-bbl-ai">대화가 초기화되었습니다. 새 질문을 시작해 보세요! 🔄</div><div class="ai-meta"><span>StockAI</span></div></div></div></div>`;
-  toast('대화 초기화 완료');
-}
-
-function aiSend(){
-  const inp=document.getElementById('ai-inp'),msg=inp.value.trim();
-  if(!msg||aiTyping)return;
-  inp.value='';resizeInp(inp);
-  appendAIMsg('user',msg);
-  aiHistory.push({role:'user',content:msg});
-  callClaude(msg);
-}
-
-function appendAIMsg(role,text){
-  const msgs=document.getElementById('ai-msgs');
-  const now=new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'});
-  const id='aib'+Date.now();
-  const isUser=role==='user';
-  const wrap=document.createElement('div');wrap.className='ai-mwrap';
-  wrap.innerHTML=`<div class="ai-m${isUser?' ai-m-u':''}">
-    <div class="ai-av ${isUser?'ai-av-u':'ai-av-ai'}">${isUser?'나':'AI'}</div>
-    <div style="flex:1;min-width:0;${isUser?'display:flex;flex-direction:column;align-items:flex-end':''}">
-      <div class="ai-bbl ${isUser?'ai-bbl-u':'ai-bbl-ai'}" id="${id}">${isUser?esc(text):'<div class="ai-dots"><span></span><span></span><span></span></div>'}</div>
-      <div class="ai-meta" style="${isUser?'justify-content:flex-end':''}"><span>${now}</span>${!isUser?`<button class="ai-copy" onclick="cpMsg(this)" title="복사"><i class="ti ti-copy"></i></button>`:''}</div>
-    </div></div>`;
-  msgs.appendChild(wrap);scrollAI();
-  return document.getElementById(id);
-}
-
-function esc(t){return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
-
-function md2html(text){
-  const esc=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-  const lines=text.split('\n');
-  const out=[];let ul=false,ol=false;
-  for(const l of lines){
-    if(/^###\s/.test(l)){if(ul){out.push('</ul>');ul=false}if(ol){out.push('</ol>');ol=false}out.push('<h3>'+esc(l.slice(4))+'</h3>');continue}
-    if(/^##\s/.test(l)){if(ul){out.push('</ul>');ul=false}if(ol){out.push('</ol>');ol=false}out.push('<h3>'+esc(l.slice(3))+'</h3>');continue}
-    if(/^>\s/.test(l)){out.push('<blockquote>'+esc(l.slice(2))+'</blockquote>');continue}
-    if(/^[-•*]\s/.test(l)){if(!ul){out.push('<ul>');ul=true}out.push('<li>'+esc(l.slice(2))+'</li>');continue}
-    if(/^\d+\.\s/.test(l)){if(!ol){out.push('<ol>');ol=true}out.push('<li>'+esc(l.replace(/^\d+\.\s/,''))+'</li>');continue}
-    if(ul){out.push('</ul>');ul=false}if(ol){out.push('</ol>');ol=false}
-    if(l.trim()===''){out.push('<br>');continue}out.push(esc(l));
-  }
-  if(ul)out.push('</ul>');if(ol)out.push('</ol>');
-  return out.join('\n').replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/\*([^*\n]+?)\*/g,'<em>$1</em>').replace(/`([^`\n]+)`/g,'<code>$1</code>').replace(/\n(?![<])/g,' ').replace(/<br>\s*<br>/g,'<br><br>');
-}
-
-function scrollAI(){const m=document.getElementById('ai-msgs');requestAnimationFrame(()=>m.scrollTop=m.scrollHeight)}
-
-async function callClaude(userMsg){
-  // API 키 확인 — 없으면 즉시 안내하고 종료
-  if(!S.apiKey){
-    appendAIMsg('assistant');
-    const msgs=document.getElementById('ai-msgs');
-    const last=msgs.lastElementChild.querySelector('.ai-bbl');
-    last.innerHTML=`<div style="line-height:1.8">
-      🔑 <strong>Claude API 키가 설정되지 않았습니다.</strong><br><br>
-      이 앱이 외부(GitHub Pages 등)에 배포된 상태에서는 인앱 AI가 작동하려면 본인의 Anthropic API 키가 필요합니다.<br><br>
-      <strong>설정 방법</strong>
-      <ol style="margin:6px 0 0 16px;padding:0">
-        <li><a href="https://console.anthropic.com/settings/keys" target="_blank" rel="noopener" style="color:var(--gdt)">console.anthropic.com</a>에서 API 키 발급</li>
-        <li>좌측 메뉴 <strong>환경설정 → AI 분석 — Claude API 키</strong>에 붙여넣고 저장</li>
-        <li>다시 질문해 보세요</li>
-      </ol><br>
-      <span style="color:var(--t2);font-size:11px">⚠️ API 사용량에 따라 비용이 청구될 수 있습니다.</span>
-    </div>`;
-    aiTyping=false;document.getElementById('ai-send').disabled=false;
-    if(aiHistory.length&&aiHistory[aiHistory.length-1]?.role==='user')aiHistory.pop();
-    nav('settings');
-    return;
-  }
-
-  aiTyping=true;document.getElementById('ai-send').disabled=true;
-  const bubble=appendAIMsg('assistant');let full='';
-  try{
-    const resp=await fetch('https://api.anthropic.com/v1/messages',{
-      method:'POST',
-      headers:{
-        'Content-Type':'application/json',
-        'x-api-key':S.apiKey,
-        'anthropic-version':'2023-06-01',
-        'anthropic-dangerous-direct-browser-access':'true'
-      },
-      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1024,system:sysPrompt(),stream:true,messages:aiHistory})
-    });
-    if(!resp.ok){
-      const err=await resp.json().catch(()=>({}));
-      const code=resp.status;
-      let hint='';
-      if(code===401) hint='API 키가 올바르지 않습니다. 환경설정에서 키를 다시 확인해 주세요.';
-      else if(code===429) hint='요청이 너무 많습니다 (Rate limit). 잠시 후 다시 시도해 주세요.';
-      else if(code===529 || code===503) hint='Anthropic 서버가 일시적으로 과부하 상태입니다. 잠시 후 다시 시도해 주세요.';
-      else hint=err.error?.message || `HTTP ${code}`;
-      throw new Error(hint);
-    }
-    const reader=resp.body.getReader(),dec=new TextDecoder();let buf='';
-    bubble.innerHTML='<span class="ai-cursor"></span>';
-    while(true){const{done,value}=await reader.read();if(done)break;buf+=dec.decode(value,{stream:true});const lines=buf.split('\n');buf=lines.pop();
-      for(const line of lines){if(!line.startsWith('data: '))continue;const d=line.slice(6).trim();if(d==='[DONE]')break;try{const ev=JSON.parse(d);if(ev.type==='content_block_delta'&&ev.delta?.type==='text_delta'){full+=ev.delta.text;bubble.innerHTML=md2html(full)+'<span class="ai-cursor"></span>';scrollAI()}}catch{}}
-    }
-    bubble.innerHTML=md2html(full);aiHistory.push({role:'assistant',content:full});
-  }catch(err){
-    let msg=err.message||String(err);
-    let extra='';
-    // 네트워크/CORS 레벨 실패 (TypeError: Failed to fetch)
-    if(err instanceof TypeError || /Failed to fetch|NetworkError/i.test(msg)){
-      msg='네트워크 요청이 차단되었습니다 (Failed to fetch)';
-      extra=`가능한 원인:<br>
-        · API 키가 비어있거나 형식이 잘못됨<br>
-        · 인터넷 연결 또는 방화벽/광고차단기 문제<br>
-        · 브라우저 확장 프로그램이 요청을 차단<br><br>
-        환경설정에서 API 키를 다시 확인하거나, 시크릿 모드/다른 브라우저에서 시도해 보세요.`;
-    }
-    bubble.innerHTML=`<span style="color:var(--upt)">⚠️ 오류: ${esc(msg)}</span>${extra?'<br><br><span style="color:var(--t2);font-size:11px">'+extra+'</span>':'<br><span style="color:var(--t2);font-size:11px">다시 시도해 주세요.</span>'}`;
-    if(aiHistory.length&&aiHistory[aiHistory.length-1]?.role==='user')aiHistory.pop();
-  }
-  finally{aiTyping=false;document.getElementById('ai-send').disabled=false;document.getElementById('ai-inp').focus()}
-}
-
-/* ── API 키 관리 ── */
-function refreshApiKeyStatus(){
-  const st=document.getElementById('api-key-status');
-  if(!st)return;
-  if(S.apiKey){st.textContent='✓ 설정됨';st.className='chip c-tl';}
-  else{st.textContent='설정 안 됨';st.className='chip c-up';}
-  const inp=document.getElementById('api-key-input');
-  if(inp && S.apiKey) inp.value=S.apiKey;
-}
-function saveApiKey(){
-  const v=document.getElementById('api-key-input').value.trim();
-  if(!v){toast('API 키를 입력해 주세요');return}
-  if(!v.startsWith('sk-ant-')){
-    if(!confirm('일반적인 Anthropic 키 형식(sk-ant-...)이 아닙니다. 그래도 저장하시겠습니까?'))return;
-  }
-  S.apiKey=v;DB.s('sa_apikey',v);refreshApiKeyStatus();toast('API 키 저장 완료 ✓');
-}
-function clearApiKey(){
-  if(!S.apiKey){toast('저장된 키가 없습니다');return}
-  if(!confirm('저장된 API 키를 삭제하시겠습니까?'))return;
-  S.apiKey='';DB.s('sa_apikey','');document.getElementById('api-key-input').value='';refreshApiKeyStatus();toast('API 키 삭제 완료');
-}
-function toggleKeyVisibility(){
-  const inp=document.getElementById('api-key-input');
-  const btn=document.getElementById('api-key-toggle');
-  if(inp.type==='password'){inp.type='text';btn.innerHTML='<i class="ti ti-eye-off"></i>'}
-  else{inp.type='password';btn.innerHTML='<i class="ti ti-eye"></i>'}
-}
-
-function cpMsg(btn){const bbl=btn.closest('.ai-m').querySelector('.ai-bbl');navigator.clipboard.writeText(bbl.innerText).then(()=>{btn.innerHTML='<i class="ti ti-check"></i>';setTimeout(()=>btn.innerHTML='<i class="ti ti-copy"></i>',1500)}).catch(()=>toast('복사 실패'))}
-function resizeInp(el){el.style.height='auto';el.style.height=Math.min(el.scrollHeight,100)+'px'}
-
 /* ════════════════════ CHARTS ════════════════════ */
 window.addEventListener('load',()=>{
   if(typeof Chart!=='undefined'){
@@ -1689,7 +1411,7 @@ window.addEventListener('load',()=>{
   const gc='rgba(30,45,64,.9)',lc='#5a7a96';
   // Korea
   const kc=document.getElementById('ch-korea');
-  if(kc)new Chart(kc,{type:'line',data:{labels:['5/1','5/2','5/6','5/7','5/8','5/9','5/12','5/13','5/14','5/15','5/16','5/19','5/20','5/21','5/22','5/23','5/26','5/27','5/28','5/29'],datasets:[{label:'코스피',data:[2570,2582,2561,2590,2598,2603,2588,2600,2610,2607,2615,2618,2622,2615,2630,2641,2625,2638,2650,2644],borderColor:'#00c8a0',backgroundColor:'rgba(0,200,160,.07)',tension:.35,pointRadius:2,fill:true}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{font:{size:9},maxRotation:0,maxTicksLimit:10},grid:{color:gc}},y:{ticks:{font:{size:9}},grid:{color:gc}}}}});
+  if(kc)new Chart(kc,{type:'line',data:{labels:['5/19','5/20','5/21','5/22','5/23','5/26','5/27','5/28','5/29','6/2','6/3','6/4','6/5','6/8','6/9','6/10','6/11','6/12','6/13','6/14'],datasets:[{label:'코스피',data:[6850,6920,6980,7050,7120,7180,7250,7320,7410,7480,7560,7640,7700,7750,7763,7980,8050,8123,8260,8500],borderColor:'#00c8a0',backgroundColor:'rgba(0,200,160,.07)',tension:.35,pointRadius:2,fill:true}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{font:{size:9},maxRotation:0,maxTicksLimit:10},grid:{color:gc}},y:{ticks:{font:{size:9}},grid:{color:gc}}}}});
   // Investor
   const ic=document.getElementById('ch-inv');
   if(ic)new Chart(ic,{type:'bar',data:{labels:['외국인','기관','개인'],datasets:[{data:[1230,-840,-390],backgroundColor:['rgba(224,48,48,.8)','rgba(29,121,242,.8)','rgba(29,121,242,.8)'],borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{font:{size:10}},grid:{display:false}},y:{ticks:{font:{size:9},callback:v=>v+'억'},grid:{color:gc}}}}});
@@ -1712,7 +1434,7 @@ function initAll(){
   renderHome();renderKorea();renderUS();renderTheme();
   renderNewsTabs();renderNews();
   renderJournal();renderGoal();renderPortfolio();
-  renderWatch();renderAISection();renderDivi();renderAlarms();renderAccView();updateSb();refreshApiKeyStatus();
+  renderWatch();renderAISection();renderDivi();renderAlarms();renderAccView();updateSb();
 }
 
 (function(){
@@ -1724,13 +1446,9 @@ function initAll(){
   const enterMap={'w-inp':()=>addWatch(),'al-stk':()=>document.getElementById('al-prc').focus(),'al-prc':()=>addAlarm(),'j-stock':()=>document.getElementById('j-qty').focus(),'j-qty':()=>document.getElementById('j-price').focus(),'j-price':()=>addTrade(),'fx-usd':()=>convFX('usd'),'fx-krw':()=>convFX('krw'),'us-p':()=>document.getElementById('us-q').focus(),'us-q':()=>calcUS()};
   Object.entries(enterMap).forEach(([id,fn])=>{const el=document.getElementById(id);if(el)el.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();fn()}})});
 
-  // AI textarea enter / resize
-  const ainp=document.getElementById('ai-inp');
-  if(ainp){ainp.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();aiSend()}});ainp.addEventListener('input',()=>resizeInp(ainp))}
-
   // Keyboard shortcuts (Alt+1~9)
-  const scMap={'1':'home','2':'korea','3':'us','4':'theme','5':'news','6':'journal','7':'goal','8':'portfolio','9':'watch','0':'settings','a':'__ai__'};
-  document.addEventListener('keydown',e=>{if(e.altKey&&scMap[e.key]){e.preventDefault();if(scMap[e.key]==='__ai__')aiAsk('');else nav(scMap[e.key])}});
+  const scMap={'1':'home','2':'korea','3':'us','4':'theme','5':'news','6':'journal','7':'goal','8':'portfolio','9':'watch','0':'settings'};
+  document.addEventListener('keydown',e=>{if(e.altKey&&scMap[e.key]){e.preventDefault();nav(scMap[e.key])}});
 })();
 </script>
 </body>
