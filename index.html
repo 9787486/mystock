@@ -2,7 +2,13 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+<meta name="theme-color" content="#090c12">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="StockAI">
+<meta name="description" content="미래 테마 투자 브리핑 — AI·반도체·방산·우주·로봇·2차전지·양자컴퓨터">
 <title>StockAI Daily — 미래 테마 투자</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap">
@@ -94,10 +100,37 @@ html,body{height:100%;font-family:var(--fd);background:var(--bg);color:var(--t1)
 .btn-tl{background:var(--tlb);color:var(--tl);border-color:var(--tll)}
 .btn-sm{padding:5px 10px;font-size:11.5px}
 .btn-xs{padding:3px 8px;font-size:10.5px}
-.tabs{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:13px}
-.tab{padding:6px 14px;border-radius:var(--rs);border:1px solid var(--ln);background:var(--card);color:var(--t2);font-size:12px;font-weight:700;cursor:pointer;transition:all .12s;font-family:var(--fd)}
+.tabs{display:flex;overflow-x:auto;flex-wrap:nowrap;gap:5px;margin-bottom:13px;padding-bottom:4px;-webkit-overflow-scrolling:touch}
+.tabs::-webkit-scrollbar{height:3px}
+.tab{flex-shrink:0;padding:6px 14px;border-radius:var(--rs);border:1px solid var(--ln);background:var(--card);color:var(--t2);font-size:12px;font-weight:700;cursor:pointer;transition:all .12s;font-family:var(--fd)}
 .tab:hover{color:var(--t1);border-color:var(--lstr)}
 .tab.on{background:var(--gdb);border-color:var(--gd);color:var(--gd)}
+@media(max-width:1100px){
+  .home-grid{grid-template-columns:1fr!important}
+  .home-right{position:static!important}
+}
+@media(max-width:900px){
+  :root{--nw:0px}
+  #sb{display:none}
+  #app{padding-bottom:62px}
+  .g2,.g3{grid-template-columns:1fr}
+  .tb-cl{display:none}
+  .theme-grid{grid-template-columns:repeat(2,1fr)}
+  .idx-grid{grid-template-columns:repeat(2,1fr)}
+  .situ-grid,.warn-grid{grid-template-columns:1fr}
+  .pr-tip-grid{grid-template-columns:1fr}
+  .tax-grid{grid-template-columns:1fr 1fr}
+  #cmp-table input{width:70px}
+  #toast{bottom:74px}
+}
+@media(max-width:500px){
+  #content{padding:.7rem}
+  .idx-grid{grid-template-columns:1fr 1fr}
+  #tb{padding:0 .9rem}
+  .pg-ti{font-size:13.5px}
+  .tax-grid{grid-template-columns:1fr}
+  .theme-grid{grid-template-columns:repeat(2,1fr)}
+}
 input,select,textarea{padding:8px 11px;border:1.5px solid var(--ln);border-radius:var(--rs);background:var(--inp);color:var(--t0);font-size:13px;font-family:var(--fd);width:100%;font-weight:500;transition:border-color .12s}
 input::placeholder,textarea::placeholder{color:var(--t3)}
 input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gd);box-shadow:0 0 0 3px rgba(251,176,45,.13)}
@@ -254,27 +287,6 @@ select option{background:var(--card)}
 .port-risk-meter{height:12px;border-radius:99px;overflow:hidden;background:linear-gradient(90deg,var(--dn),var(--gd),var(--up));position:relative;margin:10px 0;border:1px solid var(--lstr)}
 .port-risk-thumb{position:absolute;top:-3px;width:18px;height:18px;border-radius:50%;background:var(--t0);border:2px solid var(--bg);box-shadow:0 2px 8px rgba(0,0,0,.6);transition:left .3s;transform:translateX(-50%)}
 #toast{position:fixed;bottom:26px;left:50%;transform:translateX(-50%) translateY(8px);background:var(--ci);color:var(--gd);border:1.5px solid var(--gd);padding:9px 20px;border-radius:var(--r);font-size:12.5px;font-weight:700;font-family:var(--fd);z-index:9999;opacity:0;transition:opacity .2s,transform .2s;pointer-events:none;white-space:nowrap;box-shadow:0 8px 26px rgba(0,0,0,.55)}
-@media(max-width:1100px){.home-grid{grid-template-columns:1fr!important}.home-right{position:static}}
-@media(max-width:900px){
-  :root{--nw:0px}
-  #sb{display:none}
-  #app{padding-bottom:62px}
-  .g2,.g3{grid-template-columns:1fr}
-  .tb-cl{display:none}
-  .theme-grid{grid-template-columns:repeat(2,1fr)}
-  .idx-grid{grid-template-columns:repeat(2,1fr)}
-  .situ-grid,.warn-grid{grid-template-columns:1fr}
-  .pr-tip-grid{grid-template-columns:1fr}
-  .tax-grid{grid-template-columns:1fr 1fr}
-  #toast{bottom:74px}
-}
-@media(max-width:500px){
-  #content{padding:.7rem}
-  .idx-grid{grid-template-columns:1fr 1fr}
-  #tb{padding:0 .9rem}
-  .pg-ti{font-size:13.5px}
-  .tax-grid{grid-template-columns:1fr}
-}
 #mob-nav{display:none;position:fixed;bottom:0;left:0;right:0;height:62px;background:var(--sb);border-top:1px solid var(--ln);z-index:200;align-items:stretch;justify-content:space-around;box-shadow:0 -4px 18px rgba(0,0,0,.4)}
 .mn{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;flex:1;border:none;background:transparent;color:var(--t3);font-size:8.5px;font-weight:700;font-family:var(--fd);cursor:pointer;padding:4px 1px;transition:color .12s;border-top:2px solid transparent}
 .mn i{font-size:19px;transition:color .12s}
@@ -282,6 +294,12 @@ select option{background:var(--card)}
 .mn.on i{color:var(--gd)}
 .mn:active{opacity:.7}
 @media(max-width:900px){#mob-nav{display:flex}}
+/* ── 손익 추적기 인풋 ── */
+#cmp-table input{padding:4px 7px;font-size:12px;width:84px;text-align:right}
+#macro-table-wrap td{font-size:11.5px;line-height:1.5;vertical-align:middle}
+#macro-table-wrap th:first-child,#macro-table-wrap td:first-child{min-width:130px;font-weight:700}
+#fg-thumb{transition:left .5s cubic-bezier(.4,0,.2,1)}
+#content{scroll-behavior:smooth}
 </style>
 </head>
 <body>
@@ -309,8 +327,15 @@ select option{background:var(--card)}
     <div class="nb-l">투자 도구</div>
     <button class="nb-b" data-s="philosophy"><i class="ti ti-alert-triangle"></i><span>투자 원칙 & 경고</span></button>
     <button class="nb-b" data-s="valuation"><i class="ti ti-chart-bar"></i><span>밸류에이션 분석기</span></button>
+    <button class="nb-b" data-s="pnl"><i class="ti ti-calculator"></i><span>손익 추적기</span></button>
+    <button class="nb-b" data-s="compare"><i class="ti ti-arrows-exchange"></i><span>종목 비교기</span></button>
     <button class="nb-b" data-s="psych"><i class="ti ti-brain"></i><span>투자심리 자가진단</span></button>
     <button class="nb-b" data-s="portfolio"><i class="ti ti-chart-pie-2"></i><span>포트폴리오 시뮬</span></button>
+  </div>
+  <div class="nb-g">
+    <div class="nb-l">학습 & 분석</div>
+    <button class="nb-b" data-s="edu"><i class="ti ti-school"></i><span>투자 교육 허브</span></button>
+    <button class="nb-b" data-s="macro"><i class="ti ti-world"></i><span>경제지표 영향 분석</span></button>
   </div>
   <div class="nb-g">
     <div class="nb-l">계산기</div>
@@ -321,7 +346,7 @@ select option{background:var(--card)}
   <div class="sb-foot">
     <div class="sb-chip"><i class="ti ti-building-bank" style="font-size:10px"></i><span id="sf-br">한투 ISA</span></div>
     <div>총 자산 <strong id="sf-bal" style="color:var(--gd)">—</strong></div>
-    <div style="margin-top:3px;font-size:10px;color:var(--t3)">Alt+1~9 단축키</div>
+    <div style="margin-top:3px;font-size:10px;color:var(--t3)">Alt+1~0 단축키 지원</div>
   </div>
 </nav>
 <div id="main">
@@ -378,7 +403,44 @@ select option{background:var(--card)}
           </div>
         </div>
       </div>
-      <div class="home-right">
+      <div class="home-right" style="position:sticky;top:0;display:flex;flex-direction:column;gap:13px">
+        <div class="card">
+          <div class="card-hd"><div class="ct"><i class="ti ti-gauge"></i>시장 심리 지표</div></div>
+          <div class="cb" style="display:flex;flex-direction:column;gap:11px">
+            <div>
+              <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px">
+                <span style="font-size:11.5px;font-weight:700;color:var(--t2)">공포·탐욕 지수 (Fear &amp; Greed)</span>
+                <a href="https://edition.cnn.com/markets/fear-and-greed" target="_blank" rel="noopener" style="font-size:10.5px;color:var(--gd);text-decoration:none;font-weight:700">CNN →</a>
+              </div>
+              <div style="height:10px;border-radius:99px;background:linear-gradient(90deg,#f4566a,#fbb02d,#22d3c5);border:1px solid var(--lstr);position:relative;margin-bottom:5px">
+                <div id="fg-thumb" style="position:absolute;top:-4px;width:18px;height:18px;border-radius:50%;background:var(--t0);border:2px solid var(--bg);box-shadow:0 2px 6px rgba(0,0,0,.5);transform:translateX(-50%);left:62%;transition:left .4s"></div>
+              </div>
+              <div style="display:flex;justify-content:space-between;font-size:9.5px;color:var(--t3);margin-bottom:8px"><span>극단 공포</span><span>중립</span><span>극단 탐욕</span></div>
+              <div style="display:flex;align-items:center;gap:10px">
+                <div style="font-size:28px;font-weight:800;font-family:var(--fm);color:var(--gd)" id="fg-num">62</div>
+                <div>
+                  <div style="font-size:13px;font-weight:800;color:var(--t0)" id="fg-label">탐욕</div>
+                  <div style="font-size:11px;color:var(--t2)">전주 대비 <span id="fg-chg" style="color:var(--tl)">▲ 8p</span></div>
+                </div>
+              </div>
+            </div>
+            <div style="background:var(--inp);border-radius:var(--r);border:1px solid var(--ln);padding:10px 12px;font-size:12px;color:var(--t2);line-height:1.75" id="fg-guide">
+              탐욕 구간(55~75)은 시장이 과열 조짐을 보이는 단계입니다. 신규 진입보다는 보유 중인 포지션 목표가를 재점검하고, 분할 매도를 고려할 때입니다.
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+              <div style="background:var(--upb);border:1px solid var(--upl);border-radius:var(--r);padding:9px 11px;text-align:center">
+                <div style="font-size:10px;color:var(--up);font-weight:800;margin-bottom:3px">VIX (변동성)</div>
+                <div style="font-size:18px;font-weight:800;font-family:var(--fm);color:var(--t0)">16.8</div>
+                <div style="font-size:10px;color:var(--t2)">안정 구간 &lt;20</div>
+              </div>
+              <div style="background:var(--gdb);border:1px solid var(--gdl);border-radius:var(--r);padding:9px 11px;text-align:center">
+                <div style="font-size:10px;color:var(--gd);font-weight:800;margin-bottom:3px">코스피 외인</div>
+                <div style="font-size:18px;font-weight:800;font-family:var(--fm);color:var(--tl)">순매수</div>
+                <div style="font-size:10px;color:var(--t2)">3거래일 연속</div>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="card">
           <div class="card-hd"><div class="ct"><i class="ti ti-live-view"></i>실시간 데이터</div></div>
           <div style="padding:0">
@@ -412,8 +474,10 @@ select option{background:var(--card)}
           <div class="card-hd"><div class="ct"><i class="ti ti-tool"></i>빠른 투자 도구</div></div>
           <div class="cb" style="display:flex;flex-direction:column;gap:7px">
             <button class="btn btn-tl" data-nav="valuation" style="justify-content:center"><i class="ti ti-chart-bar"></i>밸류에이션 분석 →</button>
-            <button class="btn" data-nav="psych" style="justify-content:center;border-color:var(--vil);color:var(--vi)"><i class="ti ti-brain"></i>심리 자가진단 →</button>
-            <button class="btn" data-nav="portfolio" style="justify-content:center"><i class="ti ti-chart-pie-2"></i>포트폴리오 시뮬 →</button>
+            <button class="btn" data-nav="pnl" style="justify-content:center;border-color:var(--tll);color:var(--tl)"><i class="ti ti-calculator"></i>손익 추적기 →</button>
+            <button class="btn" data-nav="compare" style="justify-content:center;border-color:var(--vil);color:var(--vi)"><i class="ti ti-arrows-exchange"></i>종목 비교기 →</button>
+            <button class="btn" data-nav="psych" style="justify-content:center"><i class="ti ti-brain"></i>심리 자가진단 →</button>
+            <button class="btn" data-nav="edu" style="justify-content:center"><i class="ti ti-school"></i>투자 교육 허브 →</button>
           </div>
         </div>
       </div>
@@ -768,15 +832,136 @@ select option{background:var(--card)}
     </div>
   </section>
 
+  <!-- ══════ 손익 추적기 ══════ -->
+  <section class="sec" id="sec-pnl">
+    <div class="card" style="background:rgba(34,211,197,.06);border-color:var(--tll)">
+      <div class="cb" style="display:flex;align-items:flex-start;gap:11px;font-size:13px;color:var(--t1);line-height:1.75">
+        <i class="ti ti-calculator" style="color:var(--tl);font-size:18px;flex-shrink:0;margin-top:2px"></i>
+        <div>보유 종목의 매수가와 현재가를 입력하면 <strong style="color:var(--tl)">수익률·수익금·세후 실수령액·손익분기점</strong>을 즉시 계산합니다. ISA·일반 계좌별 세금도 자동 반영됩니다.</div>
+      </div>
+    </div>
+    <div class="g2">
+      <div class="card">
+        <div class="card-hd"><div class="ct"><i class="ti ti-input-search"></i>종목 손익 입력</div></div>
+        <div class="cb" style="display:flex;flex-direction:column;gap:10px">
+          <div class="fg"><div class="fl">종목명</div><input type="text" id="pnl-stock" placeholder="예: SK하이닉스"></div>
+          <div class="fg"><div class="fl">계좌 유형</div>
+            <select id="pnl-acct">
+              <option value="isa">ISA 중개형 (비과세 200만·초과 9.9%)</option>
+              <option value="general">일반 위탁 (매매차익 비과세)</option>
+              <option value="us">미국 주식 일반 (양도세 22%)</option>
+            </select>
+          </div>
+          <div class="fg"><div class="fl">매수 평균 단가 (원)</div><input type="number" id="pnl-buy" placeholder="예: 180000"></div>
+          <div class="fg"><div class="fl">현재가 (원)</div><input type="number" id="pnl-cur" placeholder="예: 220000"></div>
+          <div class="fg"><div class="fl">보유 수량 (주)</div><input type="number" id="pnl-qty" placeholder="예: 10" min="1"></div>
+          <div class="fg"><div class="fl">매수 수수료 (%, 보통 0.015~0.25)</div><input type="number" id="pnl-fee" placeholder="0.015" step="0.001" value="0.015"></div>
+          <button class="btn btn-gd" id="btn-pnl" style="width:100%;justify-content:center;padding:10px"><i class="ti ti-calculator"></i>손익 계산</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-hd"><div class="ct"><i class="ti ti-receipt"></i>손익 결과</div></div>
+        <div class="cb" id="pnl-result">
+          <div class="empty"><i class="ti ti-calculator"></i><p>왼쪽에 정보를 입력하고<br>계산 버튼을 누르세요.</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-hd"><div class="ct"><i class="ti ti-history"></i>손익 계산 히스토리</div><button class="btn btn-xs" id="pnl-clear-btn"><i class="ti ti-trash"></i>전체 삭제</button></div>
+      <div class="cb" id="pnl-history">
+        <div class="empty"><i class="ti ti-history"></i><p>계산한 결과가 여기에 쌓입니다.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════ 종목 비교기 ══════ -->
+  <section class="sec" id="sec-compare">
+    <div class="card" style="background:rgba(157,120,252,.06);border-color:var(--vil)">
+      <div class="cb" style="display:flex;align-items:flex-start;gap:11px;font-size:13px;color:var(--t1);line-height:1.75">
+        <i class="ti ti-arrows-exchange" style="color:var(--vi);font-size:18px;flex-shrink:0;margin-top:2px"></i>
+        <div>두 종목을 나란히 검색해 뉴스·시세·재무 정보를 동시에 비교합니다. 동일 테마 내에서 <strong style="color:var(--vi)">어느 종목이 더 매력적인지</strong> 빠르게 판단하는 데 활용하세요.</div>
+      </div>
+    </div>
+    <div class="g2" style="margin-bottom:13px">
+      <div class="card">
+        <div class="card-hd"><div class="ct" style="color:var(--tl)"><i class="ti ti-a-b" style="color:var(--tl)"></i>종목 A</div></div>
+        <div class="cb">
+          <div class="fg" style="margin-bottom:9px"><div class="fl">종목명 / 티커</div><input type="text" id="cmp-a" placeholder="예: SK하이닉스 또는 NVDA"></div>
+          <div style="display:flex;flex-direction:column;gap:7px">
+            <a id="cmp-a-news" class="btn btn-sm" href="#" target="_blank" rel="noopener" style="justify-content:center;border-color:var(--tll);color:var(--tl)"><i class="ti ti-news"></i>뉴스 검색</a>
+            <a id="cmp-a-price" class="btn btn-sm" href="#" target="_blank" rel="noopener" style="justify-content:center"><i class="ti ti-chart-line"></i>시세 검색</a>
+            <a id="cmp-a-dart" class="btn btn-sm" href="#" target="_blank" rel="noopener" style="justify-content:center;border-color:var(--vil);color:var(--vi)"><i class="ti ti-file-text"></i>DART 공시</a>
+            <a id="cmp-a-f101" class="btn btn-sm" href="#" target="_blank" rel="noopener" style="justify-content:center"><i class="ti ti-chart-bar"></i>F101 재무</a>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-hd"><div class="ct" style="color:var(--sp)"><i class="ti ti-a-b" style="color:var(--sp)"></i>종목 B</div></div>
+        <div class="cb">
+          <div class="fg" style="margin-bottom:9px"><div class="fl">종목명 / 티커</div><input type="text" id="cmp-b" placeholder="예: 삼성전자 또는 AMD"></div>
+          <div style="display:flex;flex-direction:column;gap:7px">
+            <a id="cmp-b-news" class="btn btn-sm" href="#" target="_blank" rel="noopener" style="justify-content:center;border-color:var(--spl);color:var(--sp)"><i class="ti ti-news"></i>뉴스 검색</a>
+            <a id="cmp-b-price" class="btn btn-sm" href="#" target="_blank" rel="noopener" style="justify-content:center"><i class="ti ti-chart-line"></i>시세 검색</a>
+            <a id="cmp-b-dart" class="btn btn-sm" href="#" target="_blank" rel="noopener" style="justify-content:center;border-color:var(--vil);color:var(--vi)"><i class="ti ti-file-text"></i>DART 공시</a>
+            <a id="cmp-b-f101" class="btn btn-sm" href="#" target="_blank" rel="noopener" style="justify-content:center"><i class="ti ti-chart-bar"></i>F101 재무</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-hd"><div class="ct"><i class="ti ti-scale"></i>투자 판단 기준 비교표</div></div>
+      <div class="cb" style="padding:0;overflow-x:auto">
+        <table class="tbl">
+          <thead><tr><th>항목</th><th style="color:var(--tl)">종목 A</th><th style="color:var(--sp)">종목 B</th><th>유리한 쪽</th></tr></thead>
+          <tbody id="cmp-table">
+            <tr><td>PER</td><td><input type="number" id="cmp-a-per" placeholder="18" style="width:80px;padding:4px 7px;font-size:12px"></td><td><input type="number" id="cmp-b-per" placeholder="24" style="width:80px;padding:4px 7px;font-size:12px"></td><td id="cmp-r-per" style="font-weight:800">—</td></tr>
+            <tr><td>PBR</td><td><input type="number" id="cmp-a-pbr" placeholder="1.8" step="0.01" style="width:80px;padding:4px 7px;font-size:12px"></td><td><input type="number" id="cmp-b-pbr" placeholder="2.4" step="0.01" style="width:80px;padding:4px 7px;font-size:12px"></td><td id="cmp-r-pbr" style="font-weight:800">—</td></tr>
+            <tr><td>ROE (%)</td><td><input type="number" id="cmp-a-roe" placeholder="14" step="0.1" style="width:80px;padding:4px 7px;font-size:12px"></td><td><input type="number" id="cmp-b-roe" placeholder="12" step="0.1" style="width:80px;padding:4px 7px;font-size:12px"></td><td id="cmp-r-roe" style="font-weight:800">—</td></tr>
+            <tr><td>영업이익률 (%)</td><td><input type="number" id="cmp-a-opm" placeholder="12" step="0.1" style="width:80px;padding:4px 7px;font-size:12px"></td><td><input type="number" id="cmp-b-opm" placeholder="8" step="0.1" style="width:80px;padding:4px 7px;font-size:12px"></td><td id="cmp-r-opm" style="font-weight:800">—</td></tr>
+            <tr><td>부채비율 (%)</td><td><input type="number" id="cmp-a-debt" placeholder="40" style="width:80px;padding:4px 7px;font-size:12px"></td><td><input type="number" id="cmp-b-debt" placeholder="55" style="width:80px;padding:4px 7px;font-size:12px"></td><td id="cmp-r-debt" style="font-weight:800">—</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="padding:.85rem 1.1rem;display:flex;gap:8px">
+        <button class="btn btn-gd" id="btn-cmp" style="flex:1;justify-content:center"><i class="ti ti-scale"></i>비교 분석 실행</button>
+      </div>
+      <div id="cmp-verdict" style="padding:0 1.1rem 1rem"></div>
+    </div>
+  </section>
+
+  <!-- ══════ 투자 교육 허브 ══════ -->
+  <section class="sec" id="sec-edu">
+    <div class="tabs" id="edu-tabs"></div>
+    <div id="edu-content"></div>
+  </section>
+
+  <!-- ══════ 경제지표 영향 분석 ══════ -->
+  <section class="sec" id="sec-macro">
+    <div class="card" style="background:rgba(251,176,45,.06);border-color:var(--gdl)">
+      <div class="cb" style="display:flex;align-items:flex-start;gap:11px;font-size:13px;color:var(--t1);line-height:1.75">
+        <i class="ti ti-world" style="color:var(--gd);font-size:18px;flex-shrink:0;margin-top:2px"></i>
+        <div>주요 경제지표 발표가 각 미래 테마에 <strong style="color:var(--gd)">어떤 영향을 미치는지</strong> 즉시 확인하세요. 발표 전 미리 포지션을 점검하는 데 활용하세요.</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-hd"><div class="ct"><i class="ti ti-table"></i>주요 지표 × 테마 영향도 매핑</div></div>
+      <div class="cb" style="padding:0;overflow-x:auto" id="macro-table-wrap"></div>
+    </div>
+    <div class="card">
+      <div class="card-hd"><div class="ct"><i class="ti ti-zoom-question"></i>지표별 상세 해설</div></div>
+      <div class="cb" id="macro-detail-list"></div>
+    </div>
+  </section>
+
   </div></div></div>
 <div id="toast"></div>
 <nav id="mob-nav">
   <button class="mn on" data-ms="home"><i class="ti ti-layout-dashboard"></i>시황</button>
   <button class="mn" data-ms="themes"><i class="ti ti-bulb"></i>테마</button>
-  <button class="mn" data-ms="watch"><i class="ti ti-star"></i>종목</button>
+  <button class="mn" data-ms="pnl"><i class="ti ti-calculator"></i>손익</button>
   <button class="mn" data-ms="valuation"><i class="ti ti-chart-bar"></i>밸류</button>
-  <button class="mn" data-ms="psych"><i class="ti ti-brain"></i>심리</button>
-  <button class="mn" data-ms="settings"><i class="ti ti-settings"></i>설정</button>
+  <button class="mn" data-ms="portfolio"><i class="ti ti-chart-pie-2"></i>포트</button>
+  <button class="mn" data-ms="edu"><i class="ti ti-school"></i>학습</button>
 </nav>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
@@ -810,7 +995,7 @@ function toast(msg,type){
   clearTimeout(t._t);t._t=setTimeout(()=>{t.style.opacity='0';t.style.transform='translateX(-50%) translateY(8px)';},2600);
 }
 
-const TITLES={home:'오늘의 시황',themes:'관심 테마',watch:'관심 종목',calendar:'경제지표 일정',philosophy:'투자 원칙 & 경고',valuation:'밸류에이션 분석기',psych:'투자심리 자가진단',portfolio:'포트폴리오 시뮬레이터',fx:'환율 계산기',divi:'ISA·세금 계산기',settings:'환경설정'};
+const TITLES={home:'오늘의 시황',themes:'관심 테마',watch:'관심 종목',calendar:'경제지표 일정',philosophy:'투자 원칙 & 경고',valuation:'밸류에이션 분석기',pnl:'손익 추적기',compare:'종목 비교기',psych:'투자심리 자가진단',portfolio:'포트폴리오 시뮬레이터',edu:'투자 교육 허브',macro:'경제지표 영향 분석',fx:'환율 계산기',divi:'ISA·세금 계산기',settings:'환경설정'};
 function nav(id){
   document.querySelectorAll('.sec').forEach(s=>s.classList.remove('on'));
   document.querySelectorAll('.nb-b').forEach(b=>b.classList.remove('on'));
@@ -1378,32 +1563,299 @@ document.getElementById('s-save').addEventListener('click',()=>{
   sv('acc');cancelEdit();renderAccView();toast('저장 완료 ✓');
 });
 document.getElementById('btn-export').addEventListener('click',()=>{
-  const d={acc:S.acc,watch:S.watch,philo:S.philo,port:S.port,exportedAt:new Date().toISOString()};
+  const d={acc:S.acc,watch:S.watch,philo:S.philo,port:S.port,pnl:pnlHistory,exportedAt:new Date().toISOString()};
   const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(d,null,2)],{type:'application/json'}));a.download='StockAI_backup_'+new Date().toISOString().slice(0,10)+'.json';a.click();toast('내보내기 완료 ↓');
 });
 document.getElementById('btn-import').addEventListener('click',()=>{
   const inp=document.createElement('input');inp.type='file';inp.accept='.json';
-  inp.onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=ev=>{try{const d=JSON.parse(ev.target.result);if(d.acc){S.acc=d.acc;sv('acc');}if(d.watch){S.watch=d.watch;sv('watch');}if(d.philo){S.philo=d.philo;sv('philo');}if(d.port){S.port=d.port;sv('port');}initAll();toast('가져오기 완료 ✓');}catch{toast('파일 형식 오류','error');}};r.readAsText(f);};inp.click();
+  inp.onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=ev=>{try{const d=JSON.parse(ev.target.result);if(d.acc){S.acc=d.acc;sv('acc');}if(d.watch){S.watch=d.watch;sv('watch');}if(d.philo){S.philo=d.philo;sv('philo');}if(d.port){S.port=d.port;sv('port');}if(d.pnl){pnlHistory=d.pnl;DB.s('sa_pnl_hist',pnlHistory);}initAll();toast('가져오기 완료 ✓');}catch{toast('파일 형식 오류','error');}};r.readAsText(f);};inp.click();
 });
 document.getElementById('btn-reset').addEventListener('click',()=>{
   if(!confirm('모든 데이터를 초기화하시겠습니까?'))return;
-  ['sa_acc','sa_watch','sa_philo','sa_port','sa_chk','sa_psych_ans'].forEach(k=>localStorage.removeItem(k));
+  ['sa_acc','sa_watch','sa_philo','sa_port','sa_chk','sa_psych_ans','sa_pnl_hist'].forEach(k=>localStorage.removeItem(k));
   location.reload();
 });
 
 /* ═══ 엔터키·단축키 ═══ */
 const enterMap={'w-inp':addWatch,'fx-usd':()=>convFX('usd'),'fx-krw':()=>convFX('krw'),'us-q':calcUS,'va-debt':runValuation,'isa-profit':calcISA,'pen-irp':calcPension};
 Object.entries(enterMap).forEach(([id,fn])=>{const e=document.getElementById(id);if(e)e.addEventListener('keydown',ev=>{if(ev.key==='Enter'){ev.preventDefault();fn();}});});
-const scMap={'1':'home','2':'themes','3':'watch','4':'calendar','5':'philosophy','6':'valuation','7':'psych','8':'portfolio','9':'settings'};
+const scMap={'1':'home','2':'themes','3':'watch','4':'calendar','5':'philosophy','6':'valuation','7':'pnl','8':'compare','9':'psych','0':'portfolio'};
 document.addEventListener('keydown',e=>{if(e.altKey&&scMap[e.key]){e.preventDefault();nav(scMap[e.key]);}});
 
 /* ═══ 초기화 ═══ */
+/* ═══════════════════════════════════════════
+   손익 추적기
+═══════════════════════════════════════════ */
+let pnlHistory=DB.g('sa_pnl_hist',[]);
+function calcPnL(){
+  const stock=document.getElementById('pnl-stock').value.trim();
+  const acct=document.getElementById('pnl-acct').value;
+  const buy=parseFloat(document.getElementById('pnl-buy').value)||0;
+  const cur=parseFloat(document.getElementById('pnl-cur').value)||0;
+  const qty=parseInt(document.getElementById('pnl-qty').value)||0;
+  const feeRate=(parseFloat(document.getElementById('pnl-fee').value)||0.015)/100;
+  const el=document.getElementById('pnl-result');if(!el)return;
+  if(!buy||!cur||!qty){el.innerHTML=`<div class="empty"><i class="ti ti-alert-circle"></i><p>매수가·현재가·수량을 입력하세요.</p></div>`;return;}
+  const buyTotal=buy*qty;
+  const buyFee=buyTotal*feeRate;
+  const sellTotal=cur*qty;
+  const sellFee=sellTotal*0.0025+sellTotal*0.00015; // 수수료+거래세
+  const grossPnL=sellTotal-buyTotal;
+  const netBeforeTax=sellTotal-buyTotal-buyFee-sellFee;
+  // 세금 계산
+  let tax=0,taxNote='';
+  if(acct==='general'){tax=0;taxNote='국내 주식 매매차익 비과세';}
+  else if(acct==='isa'){
+    const taxable=Math.max(0,grossPnL-2000000);
+    tax=taxable*0.099;
+    taxNote=`ISA: 200만원 비과세 후 초과분 ${Math.max(0,grossPnL-2000000).toLocaleString()}원에 9.9% 과세`;
+  }else{
+    tax=Math.max(0,netBeforeTax)*0.22;
+    taxNote='미국 주식 양도세 22% (250만원 공제 미적용 간이 계산)';
+  }
+  const netAfterTax=netBeforeTax-tax;
+  const pctGross=((cur-buy)/buy*100);
+  const pctNet=(netAfterTax/buyTotal*100);
+  const bep=buy*(1+feeRate)+sellFee/qty; // 손익분기점
+  const isProfit=netAfterTax>=0;
+  el.innerHTML=`
+    <div style="text-align:center;margin-bottom:16px">
+      <div style="font-size:11px;font-weight:800;color:var(--t2);letter-spacing:.05em;text-transform:uppercase;margin-bottom:4px">${esc(stock||'종목')} 손익 분석</div>
+      <div style="font-size:38px;font-weight:800;font-family:var(--fm);color:${isProfit?'var(--tl)':'var(--up)'}">${isProfit?'+':''}${Math.round(netAfterTax).toLocaleString()}<span style="font-size:16px">원</span></div>
+      <div style="font-size:15px;font-weight:700;color:${isProfit?'var(--tl)':'var(--up)'};margin-top:2px">${isProfit?'+':''}${pctNet.toFixed(2)}% <span style="font-size:12px;color:var(--t2)">(세후)</span></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:0">
+      <div class="row"><span style="font-size:12.5px;color:var(--t2)">매수 총액</span><span style="font-family:var(--fm);font-weight:700">${buyTotal.toLocaleString()}원</span></div>
+      <div class="row"><span style="font-size:12.5px;color:var(--t2)">현재 평가액</span><span style="font-family:var(--fm);font-weight:700">${sellTotal.toLocaleString()}원</span></div>
+      <div class="row"><span style="font-size:12.5px;color:var(--t2)">세전 손익</span><span style="font-family:var(--fm);font-weight:700;color:${grossPnL>=0?'var(--tl)':'var(--up)'}">${grossPnL>=0?'+':''}${Math.round(grossPnL).toLocaleString()}원 (${pctGross.toFixed(2)}%)</span></div>
+      <div class="row"><span style="font-size:12.5px;color:var(--t2)">수수료·거래세</span><span style="font-family:var(--fm);font-weight:700;color:var(--up)">-${Math.round(buyFee+sellFee).toLocaleString()}원</span></div>
+      <div class="row"><span style="font-size:12.5px;color:var(--t2)">세금</span><span style="font-family:var(--fm);font-weight:700;color:var(--up)">-${Math.round(tax).toLocaleString()}원</span></div>
+      <div class="row" style="border:none"><span style="font-size:13px;font-weight:800;color:var(--t0)">세후 실수령 손익</span><span style="font-family:var(--fm);font-weight:800;font-size:15px;color:${isProfit?'var(--tl)':'var(--up)'}">${isProfit?'+':''}${Math.round(netAfterTax).toLocaleString()}원</span></div>
+    </div>
+    <div style="margin-top:12px;display:grid;grid-template-columns:1fr 1fr;gap:8px">
+      <div style="background:var(--inp);border:1px solid var(--ln);border-radius:var(--r);padding:10px 12px">
+        <div style="font-size:10px;color:var(--t2);font-weight:700;margin-bottom:4px">손익분기점</div>
+        <div style="font-size:16px;font-weight:800;font-family:var(--fm);color:var(--gd)">${Math.ceil(bep).toLocaleString()}원</div>
+        <div style="font-size:10.5px;color:var(--t2);margin-top:2px">수수료 포함 본전가</div>
+      </div>
+      <div style="background:var(--inp);border:1px solid var(--ln);border-radius:var(--r);padding:10px 12px">
+        <div style="font-size:10px;color:var(--t2);font-weight:700;margin-bottom:4px">현재가 vs BEP</div>
+        <div style="font-size:16px;font-weight:800;font-family:var(--fm);color:${cur>=bep?'var(--tl)':'var(--up)'}">${cur>=bep?'+':''}${((cur/bep-1)*100).toFixed(2)}%</div>
+        <div style="font-size:10.5px;color:var(--t2);margin-top:2px">${cur>=bep?'수익 중':'아직 손익분기 미달'}</div>
+      </div>
+    </div>
+    <div style="margin-top:10px;padding:9px 11px;background:var(--inp);border-radius:var(--r);border:1px solid var(--ln);font-size:11.5px;color:var(--t2);line-height:1.7">${esc(taxNote)}</div>`;
+  // 히스토리 저장
+  const rec={stock:stock||'종목',buy,cur,qty,pct:pctNet.toFixed(2),net:Math.round(netAfterTax),date:new Date().toLocaleDateString('ko-KR',{month:'2-digit',day:'2-digit'})};
+  pnlHistory.unshift(rec);if(pnlHistory.length>20)pnlHistory.pop();
+  DB.s('sa_pnl_hist',pnlHistory);renderPnLHistory();
+}
+function renderPnLHistory(){
+  const el=document.getElementById('pnl-history');if(!el)return;
+  if(!pnlHistory.length){el.innerHTML=`<div class="empty"><i class="ti ti-history"></i><p>계산한 결과가 여기에 쌓입니다.</p></div>`;return;}
+  el.innerHTML=pnlHistory.map((r,i)=>`
+    <div class="row">
+      <div><span style="font-size:13px;font-weight:700;color:var(--t0)">${esc(r.stock)}</span><span style="font-size:11px;color:var(--t2);margin-left:8px">${r.date}</span></div>
+      <div style="display:flex;align-items:center;gap:12px">
+        <span style="font-size:13.5px;font-weight:800;font-family:var(--fm);color:${parseFloat(r.pct)>=0?'var(--tl)':'var(--up)'}">${parseFloat(r.pct)>=0?'+':''}${r.pct}%</span>
+        <span style="font-size:12px;font-family:var(--fm);color:var(--t1)">${r.net>=0?'+':''}${r.net.toLocaleString()}원</span>
+        <button class="btn btn-xs btn-danger" data-pnl-del="${i}"><i class="ti ti-x"></i></button>
+      </div>
+    </div>`).join('');
+}
+document.getElementById('btn-pnl').addEventListener('click',calcPnL);
+document.getElementById('pnl-clear-btn').addEventListener('click',()=>{if(confirm('히스토리를 전체 삭제하시겠습니까?')){pnlHistory=[];DB.s('sa_pnl_hist',[]);renderPnLHistory();}});
+// pnl history 삭제 이벤트 — 한 번만 등록
+document.getElementById('pnl-history').addEventListener('click',e=>{
+  const b=e.target.closest('[data-pnl-del]');
+  if(b){pnlHistory.splice(parseInt(b.dataset.pnlDel),1);DB.s('sa_pnl_hist',pnlHistory);renderPnLHistory();}
+});
+['pnl-buy','pnl-cur','pnl-qty'].forEach(id=>{const e=document.getElementById(id);if(e)e.addEventListener('keydown',ev=>{if(ev.key==='Enter'){ev.preventDefault();calcPnL();}});});
+
+/* ═══════════════════════════════════════════
+   종목 비교기
+═══════════════════════════════════════════ */
+function updateCmpLinks(){
+  const a=document.getElementById('cmp-a').value.trim();
+  const b=document.getElementById('cmp-b').value.trim();
+  const base='https://www.google.com/search?q=';
+  const dart='https://dart.fss.or.kr/dsab007/main.do?option=corp&textCrpNm=';
+  const f101='https://finance.naver.com/item/main.naver?code=';
+  if(a){
+    document.getElementById('cmp-a-news').href=base+encodeURIComponent(a+' 주식 뉴스')+'&tbm=nws';
+    document.getElementById('cmp-a-price').href=base+encodeURIComponent(a+' 주가 시세');
+    document.getElementById('cmp-a-dart').href=dart+encodeURIComponent(a);
+    document.getElementById('cmp-a-f101').href=f101+a;
+  }
+  if(b){
+    document.getElementById('cmp-b-news').href=base+encodeURIComponent(b+' 주식 뉴스')+'&tbm=nws';
+    document.getElementById('cmp-b-price').href=base+encodeURIComponent(b+' 주가 시세');
+    document.getElementById('cmp-b-dart').href=dart+encodeURIComponent(b);
+    document.getElementById('cmp-b-f101').href=f101+b;
+  }
+}
+function runCompare(){
+  const a=document.getElementById('cmp-a').value.trim()||'종목 A';
+  const b=document.getElementById('cmp-b').value.trim()||'종목 B';
+  const metrics=[
+    {id:'per',label:'PER',lowerBetter:true},
+    {id:'pbr',label:'PBR',lowerBetter:true},
+    {id:'roe',label:'ROE',lowerBetter:false},
+    {id:'opm',label:'영업이익률',lowerBetter:false},
+    {id:'debt',label:'부채비율',lowerBetter:true},
+  ];
+  let aWin=0,bWin=0;
+  metrics.forEach(m=>{
+    const va=parseFloat(document.getElementById('cmp-a-'+m.id).value)||null;
+    const vb=parseFloat(document.getElementById('cmp-b-'+m.id).value)||null;
+    const el=document.getElementById('cmp-r-'+m.id);if(!el)return;
+    if(va===null||vb===null){el.textContent='—';el.style.color='var(--t3)';return;}
+    const aWins=m.lowerBetter?va<vb:va>vb;
+    if(aWins){el.innerHTML=`<span style="color:var(--tl)">A 우세</span>`;aWin++;}
+    else if(va===vb){el.innerHTML=`<span style="color:var(--t2)">동일</span>`;}
+    else{el.innerHTML=`<span style="color:var(--sp)">B 우세</span>`;bWin++;}
+  });
+  const vd=document.getElementById('cmp-verdict');if(!vd)return;
+  const winner=aWin>bWin?a:bWin>aWin?b:'동점';
+  const color=aWin>bWin?'var(--tl)':bWin>aWin?'var(--sp)':'var(--gd)';
+  vd.innerHTML=`<div style="background:var(--inp);border:1.5px solid ${color};border-radius:var(--r);padding:12px 14px">
+    <div style="font-size:11px;font-weight:800;color:${color};letter-spacing:.05em;text-transform:uppercase;margin-bottom:6px">비교 결과 (${aWin+bWin}개 지표 비교)</div>
+    <div style="font-size:16px;font-weight:800;color:var(--t0);margin-bottom:7px">${winner==='동점'?'두 종목 동점':`<strong style="color:${color}">${esc(winner)}</strong>가 ${Math.max(aWin,bWin)}:${Math.min(aWin,bWin)}으로 우세`}</div>
+    <div style="font-size:12.5px;color:var(--t2);line-height:1.7">⚠️ 정량 지표만의 비교이며 실제 투자 판단에는 수급·모멘텀·사업 전망 등을 추가로 고려하세요.</div>
+  </div>`;
+  toast('비교 분석 완료');
+}
+['cmp-a','cmp-b'].forEach(id=>{
+  const e=document.getElementById(id);
+  if(e){
+    e.addEventListener('input',updateCmpLinks);
+    e.addEventListener('keydown',ev=>{if(ev.key==='Enter'){ev.preventDefault();updateCmpLinks();}});
+  }
+});
+document.getElementById('btn-cmp').addEventListener('click',runCompare);
+
+/* ═══════════════════════════════════════════
+   투자 교육 허브
+═══════════════════════════════════════════ */
+const EDU_DATA=[
+  {id:'ai_semi',label:'🤖 AI·반도체',sections:[
+    {title:'왜 지금 AI·반도체인가?',body:'2026년은 AI 인프라 투자 사이클의 절정기입니다. 빅테크(MS·구글·아마존·메타)의 AI 데이터센터 투자가 2025~2027년 누적 2조달러를 넘어설 전망이며, 이 수요의 핵심은 GPU(엔비디아)와 HBM(고대역폭 메모리, SK하이닉스·삼성전자)입니다. 국내 기업들은 글로벌 AI 공급망의 핵심 위치에 있습니다.',color:'var(--gd)'},
+    {title:'HBM(고대역폭 메모리)이란?',body:'HBM은 D램을 수직으로 쌓아 연결한 메모리로, 일반 DDR5 대비 20배 이상의 대역폭을 제공합니다. AI 학습에 필수적이며, 현재 HBM3e(5세대)가 주류이고 HBM4가 2025~2026년 양산 중입니다. SK하이닉스가 엔비디아 HBM 공급 점유율 50% 이상으로 글로벌 1위입니다.',color:'var(--gd)'},
+    {title:'투자 논리 & 밸류체인',body:'① GPU(엔비디아/AMD) → ② HBM(SK하이닉스/삼성전자) → ③ 패키징(한미반도체) → ④ AI 서버 PCB(이수페타시스) → ⑤ 데이터센터 전력(HD현대일렉트릭/LS일렉트릭) 순으로 수혜가 전달됩니다. 퓨어플레이보다 밸류체인 전체로 분산하면 리스크를 낮출 수 있습니다.',color:'var(--gd)'},
+    {title:'주요 리스크',body:'① 미중 반도체 규제 재강화 → 장비·소재 수출 차질 ② HBM 공급 과잉 전환 시점 (2027년 이후 예상) ③ AI 거품 논란 — 수익 모델 부재 기업 구분 필요 ④ 메모리 가격 사이클(D램 다운턴 반복)',color:'var(--up)'},
+  ]},
+  {id:'defense',label:'🛡️ 방산·우주',sections:[
+    {title:'K-방산 수출 슈퍼사이클이란?',body:'러시아-우크라이나 전쟁 이후 유럽 NATO 회원국들이 방위비를 GDP 2% 이상으로 증액하면서 한국 방산 수출이 급증하고 있습니다. K9 자주포(한화에어로스페이스)·K2 전차(현대로템)·FA-50 전투기(KAI)·천궁 미사일(LIG넥스원) 수주가 폴란드·루마니아·사우디·UAE 등으로 확대되고 있습니다.',color:'var(--up)'},
+    {title:'우주산업 — 왜 지금?',body:'2026년은 대한민국 우주산업의 원년입니다. 우주항공청(KASA) 출범 후 예산이 2배 증가했고, 민간 발사체(이노스페이스 한빛-나노)·초소형 위성(루미르·쎄트렉아이)·위성통신(AP위성) 등 민간 생태계가 빠르게 성장 중입니다. SpaceX의 스타십·로켓랩(RKLB)의 뉴트론 등 글로벌 소형 발사체 시장도 연평균 15% 성장합니다.',color:'var(--sp)'},
+    {title:'투자 논리',body:'방산은 수주잔고 기반의 예측 가능한 매출 구조가 특징입니다. 한번 계약되면 5~10년 납품이 이어지므로 단기 시황에 덜 흔들립니다. 우주는 장기 성장성이 높지만 기술 리스크가 크므로 방산 대형주 베이스에 우주 소형주를 소액 추가하는 전략이 유효합니다.',color:'var(--tl)'},
+    {title:'주요 리스크',body:'① 원달러 환율 하락 → 수출 단가 압박 ② 지정학적 갈등 완화 시 방위비 증액 둔화 ③ 기술 개발 지연 리스크 (특히 발사체·위성) ④ 미국 방산 기업과의 경쟁 심화',color:'var(--up)'},
+  ]},
+  {id:'robot',label:'🦾 로봇',sections:[
+    {title:'휴머노이드 시대가 열리는 이유',body:'테슬라 옵티머스·Figure AI·1X Technologies 등이 2026~2028년 양산을 목표로 경쟁 중입니다. 엔비디아의 Jetson·Isaac 플랫폼이 로봇 AI의 표준이 되면서, 국내 레인보우로보틱스(삼성 지분 투자)·두산로보틱스가 부상하고 있습니다. 핵심 부품은 감속기(에스비비테크)·액추에이터·비전 센서입니다.',color:'var(--dn)'},
+    {title:'협동로봇 vs 산업용 로봇 vs 휴머노이드',body:'협동로봇: 사람과 나란히 작업, 중소기업 자동화 수요 폭증. / 산업용 로봇: ABB·파낙 등 검증된 시장, 안정적 성장. / 휴머노이드: 아직 초기 단계, 2026~2028년 소규모 양산 예정. 리스크 대비 성장성 순서는 휴머노이드>협동>산업용입니다.',color:'var(--dn)'},
+    {title:'주요 리스크',body:'① 개발 일정 반복 지연 ② 중국산 저가 감속기·액추에이터 경쟁 ③ 핵심 부품 공급망 집중 리스크 ④ 상용화 BEP 달성 시점 불확실',color:'var(--up)'},
+  ]},
+  {id:'battery',label:'🔋 2차전지',sections:[
+    {title:'ESS가 전기차 위축을 상쇄한다',body:'전기차 성장 둔화 우려에도 불구하고, 에너지저장장치(ESS) 수요가 급증하면서 배터리 시장을 지지하고 있습니다. 미국·유럽의 재생에너지 확대 정책에 따라 대용량 ESS 수요가 2026년 전년 대비 40% 이상 성장 전망입니다.',color:'var(--tl)'},
+    {title:'전고체 배터리란?',body:'현재 리튬이온 배터리의 액체 전해질을 고체로 교체한 차세대 배터리입니다. 에너지밀도 2배·화재 위험 없음·충전 속도 개선이 특징입니다. 삼성SDI는 2027년, 토요타는 2026년 소규모 양산을 목표로 합니다. 전고체 기술을 가진 기업은 장기 프리미엄을 받을 수 있습니다.',color:'var(--tl)'},
+    {title:'주요 리스크',body:'① 중국 CATL의 글로벌 점유율 60% 압박 ② 리튬 가격 하락 → 양극재 기업 수익성 악화 ③ 전기차 수요 둔화 지속 시 배터리 재고 부담 ④ 미국 IRA 정책 변동 가능성',color:'var(--up)'},
+  ]},
+  {id:'quantum',label:'⚛️ 양자컴퓨터',sections:[
+    {title:'양자컴퓨터가 뭔지 쉽게 설명하면?',body:'기존 컴퓨터가 0과 1로만 연산하는 반면, 양자컴퓨터는 0과 1이 동시에 존재하는 "중첩" 상태를 이용해 특정 문제를 기하급수적으로 빠르게 푸는 기술입니다. 암호 해독·신약 개발·최적화 문제에서 혁명적 성능을 발휘합니다. 단, 현재 상업적 활용까지는 5~10년이 더 필요합니다.',color:'var(--vi)'},
+    {title:'국내 투자 포인트 — QKD',body:'양자컴퓨터가 현존 암호를 해독할 수 있게 되면, 양자암호통신(QKD)이 새로운 보안 표준이 됩니다. 국내 정부는 QKD 국가망 구축에 예산을 집중 투입 중이며, SK텔레콤·KT·코위버·드림시큐리티 등이 수혜주입니다. 이는 양자컴퓨터 실용화 전에도 수익이 발생하는 조기 수혜 분야입니다.',color:'var(--vi)'},
+    {title:'주요 리스크',body:'① 상용화 시점 불확실 (5~10년) — 모멘텀 의존도 높음 ② 구글·IBM 등 빅테크의 기술 독점 ③ 큐비트 오류율 개선 속도 느림 ④ 현재 주가는 기술보다 기대감 반영 — 고평가 가능성',color:'var(--up)'},
+  ]},
+  {id:'space',label:'🚀 우주항공',sections:[
+    {title:'우주 경제 시대란?',body:'위성 인터넷(스타링크), 위성 영상 분석, 우주 관광, 달·화성 탐사 등으로 우주가 경제적 활동 무대가 되고 있습니다. 글로벌 우주 시장은 2040년 1조달러 규모로 성장할 전망이며, 소형 발사체·초소형 위성·지상국 등 민간 기업의 진입 장벽이 낮아졌습니다.',color:'var(--sp)'},
+    {title:'SpaceX 상장이 왜 중요한가?',body:'SpaceX가 나스닥 상장(SPCX)을 추진 중이며, 상장 시 우주 테마 ETF 및 연계 종목에 자금이 대거 유입될 전망입니다. 국내 우주 관련주(한화에어로스페이스·KAI·쎄트렉아이)도 간접 수혜를 받을 수 있습니다.',color:'var(--sp)'},
+    {title:'주요 리스크',body:'① 발사체 개발 지연 반복 ② 선발 기업(SpaceX) 대비 경쟁력 격차 ③ 정부 예산 의존도 높음 — 정책 변화 취약 ④ 장기 투자 필요 — 5~10년 지평',color:'var(--up)'},
+  ]},
+];
+let curEdu=EDU_DATA[0].id;
+function renderEduTabs(){
+  const el=document.getElementById('edu-tabs');if(!el)return;
+  el.innerHTML=EDU_DATA.map(e=>`<button class="tab${curEdu===e.id?' on':''}" data-edu="${e.id}">${e.label}</button>`).join('');
+  el.addEventListener('click',ev=>{const b=ev.target.closest('[data-edu]');if(!b)return;curEdu=b.dataset.edu;el.querySelectorAll('.tab').forEach(t=>t.classList.toggle('on',t.dataset.edu===curEdu));renderEduContent();});
+}
+function renderEduContent(){
+  const el=document.getElementById('edu-content');if(!el)return;
+  const data=EDU_DATA.find(e=>e.id===curEdu);if(!data)return;
+  el.innerHTML=data.sections.map(s=>`
+    <div class="card" style="border-left:4px solid ${s.color}">
+      <div class="card-hd"><div class="ct" style="color:${s.color};font-size:13.5px">${esc(s.title)}</div></div>
+      <div class="cb"><div style="font-size:13.5px;color:var(--t1);line-height:1.85">${esc(s.body)}</div></div>
+    </div>`).join('');
+}
+
+/* ═══════════════════════════════════════════
+   경제지표 영향 분석
+═══════════════════════════════════════════ */
+const MACRO_MAP=[
+  {name:'미국 CPI (소비자물가)',
+   effects:{ai_semi:'↑호재: 금리 하락 기대 → 성장주 밸류 상승',quantum:'↑호재: 성장주 재평가',robot:'↑호재: 성장주 반등',battery:'↑호재: ESS 수요 금리 민감',space:'↑호재: 장기 성장주 수혜',defense:'→중립: 금리보다 지정학 영향'},
+   guide:'CPI가 예상보다 낮게 나오면 금리 인하 기대 → 성장주·테마주에 호재. CPI 쇼크(예상 초과)는 성장주 급락 위험.'},
+  {name:'미국 비농업 고용 (NFP)',
+   effects:{ai_semi:'↓주의: 고용 호조=금리 인하 지연',quantum:'↓주의: 금리 민감',robot:'↓주의: 금리 민감',battery:'↓주의: 금리 인하 기대 후퇴',space:'↓주의: 성장주 조정',defense:'↑호재: 경기 호조 → 방위비 지출 유지'},
+   guide:'고용 강세(NFP 호조)는 연준의 금리 인하를 지연시켜 성장주에 단기 악재. 그러나 경기 좋다는 신호이므로 방산·실적주엔 우호적.'},
+  {name:'연준 FOMC 금리 결정',
+   effects:{ai_semi:'↑호재: 금리 인하 시 성장주 랠리',quantum:'↑호재: 장기 성장주 최대 수혜',robot:'↑호재: 성장주 재평가',battery:'↑호재: 글로벌 투자 심리 개선',space:'↑호재: 장기 프로젝트 할인율 하락',defense:'→중립: 수주·수익 구조 독립적'},
+   guide:'금리 인하: 테마주 전반 강세. 금리 동결·인상: 단기 조정. FOMC 전후 변동성 확대에 대비해 규모를 줄이고 결과 확인 후 진입 권장.'},
+  {name:'한국 수출입 동향',
+   effects:{ai_semi:'↑호재: 반도체 수출 증가=실적 개선',quantum:'→중립',robot:'↑호재: 로봇·장비 수출 반영',battery:'↑호재: 배터리 셀·소재 수출',space:'→중립',defense:'↑호재: 방산 수출 계약 규모 반영'},
+   guide:'한국 전체 수출에서 반도체 비중이 20% 이상. 반도체 수출 증감은 삼성전자·SK하이닉스 실적의 선행 지표이므로 즉각 반응.'},
+  {name:'한국은행 기준금리',
+   effects:{ai_semi:'↑호재: 국내 성장주 수급 개선',quantum:'↑호재',robot:'↑호재',battery:'↑호재: 전기차·ESS 대출 비용 하락',space:'↑호재',defense:'→중립: 금리보다 수주가 핵심'},
+   guide:'한은 금리 인하는 국내 증시 유동성 공급 신호. 특히 중소형 테마주(양자·우주·로봇)는 금리에 민감하게 반응하는 경향이 있습니다.'},
+  {name:'미국 PCE 물가지수',
+   effects:{ai_semi:'↑호재: 연준 인하 기대 강화',quantum:'↑호재',robot:'↑호재',battery:'↑호재',space:'↑호재',defense:'→중립'},
+   guide:'PCE는 연준이 공식적으로 가장 중시하는 물가 지표. CPI보다 구조적이며 FOMC 결정에 직접 영향. 시장 반응은 CPI와 유사.'},
+];
+function renderMacroTable(){
+  const el=document.getElementById('macro-table-wrap');if(!el)return;
+  const themeNames={ai_semi:'AI·반도체',quantum:'양자컴퓨터',robot:'로봇',battery:'2차전지',space:'우주항공',defense:'방산'};
+  el.innerHTML=`<table class="tbl"><thead><tr><th>경제지표</th>${Object.values(themeNames).map(n=>`<th>${n}</th>`).join('')}</tr></thead><tbody>
+    ${MACRO_MAP.map(m=>`<tr><td><strong>${m.name}</strong></td>${Object.keys(themeNames).map(k=>{const ef=m.effects[k]||'→중립';const col=ef.startsWith('↑')?'color:var(--tl)':ef.startsWith('↓')?'color:var(--up)':'color:var(--t2)';return`<td style="font-size:12px;${col}">${ef}</td>`;}).join('')}</tr>`).join('')}
+  </tbody></table>`;
+}
+function renderMacroDetails(){
+  const el=document.getElementById('macro-detail-list');if(!el)return;
+  el.innerHTML=MACRO_MAP.map(m=>`
+    <div style="padding:13px 0;border-bottom:1px solid var(--ls)">
+      <div style="font-size:13.5px;font-weight:800;color:var(--t0);margin-bottom:6px">📊 ${m.name}</div>
+      <div style="font-size:13px;color:var(--t1);line-height:1.8">${esc(m.guide)}</div>
+    </div>`).join('');
+}
+
+/* ═══════════════════════════════════════════
+   공포탐욕 지수 인터랙티브 업데이트
+═══════════════════════════════════════════ */
+function updateFGIndex(score){
+  const thumb=document.getElementById('fg-thumb');if(thumb)thumb.style.left=score+'%';
+  const num=document.getElementById('fg-num');if(num)num.textContent=score;
+  const label=document.getElementById('fg-label');
+  const guide=document.getElementById('fg-guide');
+  let lbl,col,gd;
+  if(score<=20){lbl='극단 공포';col='var(--up)';gd='극단 공포 구간입니다. 역발상 투자 관점에서 우량 테마주 분할 매수를 고려할 수 있습니다. 공포에 매수하는 것이 장기적으로 유효한 전략입니다.';}
+  else if(score<=40){lbl='공포';col='var(--sp)';gd='공포 구간입니다. 시장 심리가 냉각되어 있어 고품질 종목이 저평가될 수 있습니다. 분할 매수 진입 적기일 수 있습니다.';}
+  else if(score<=60){lbl='중립';col='var(--gd)';gd='중립 구간입니다. 뚜렷한 방향성이 없는 시장입니다. 개별 종목 모멘텀과 밸류에이션 중심으로 선별 투자가 유효합니다.';}
+  else if(score<=75){lbl='탐욕';col='var(--tl)';gd='탐욕 구간('+score+')입니다. 시장 과열 조짐 단계. 신규 진입보다는 보유 종목 목표가를 재점검하고 분할 매도를 고려할 때입니다.';}
+  else{lbl='극단 탐욕';col='var(--up)';gd='극단 탐욕 구간입니다. 주의가 필요합니다. 군중이 탐욕스러울 때 두려워해야 합니다. 포지션 축소와 현금 확보를 권장합니다.';}
+  if(label){label.textContent=lbl;label.style.color=col;}
+  if(guide)guide.textContent=gd;
+}
+// 페이지 로드 시 기본값 62로 설정
+setTimeout(()=>updateFGIndex(62),300);
+
 function initAll(){
   renderHome();renderThemeGrid();renderWatch();
   renderCalTabs();renderCalendar();
   renderPhilo();renderWarnCards();renderChecklist();
   renderValAvgTable();renderPsychQ();renderPortSliders();
+  renderPnLHistory();
+  renderEduTabs();renderEduContent();
+  renderMacroTable();renderMacroDetails();
   renderAccView();calcR();
+  updateCmpLinks();
 }
 initAll();
 </script>
