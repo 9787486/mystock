@@ -1,1 +1,1 @@
-# mystock
+# stockai
