@@ -1083,6 +1083,73 @@ select option{background:var(--card)}
     </div>
   </section>
 
+  <!-- 오늘의 경제 뉴스 -->
+  <section class="sec" id="sec-news">
+    <div class="card" style="background:rgba(40,60,90,.12);border-color:var(--lstr)">
+      <div class="cb" style="display:flex;align-items:center;gap:11px;font-size:13px;color:var(--t1);line-height:1.7">
+        <i class="ti ti-info-circle" style="color:var(--gd);font-size:18px;flex-shrink:0"></i>
+        구글 뉴스 RSS를 통해 실제 최신 뉴스를 불러옵니다. 광고 없이 헤드라인과 요약을 바로 확인하고, 클릭하면 원문으로 이동합니다.
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-hd">
+        <div class="ct"><i class="ti ti-news"></i>오늘의 경제 뉴스</div>
+        <div style="display:flex;gap:7px;align-items:center">
+          <span class="nb-badge" id="econ-news-fresh" style="display:none">LIVE</span>
+          <button class="btn btn-sm" id="econ-news-refresh" onclick="loadEconNews()"><i class="ti ti-refresh"></i>새로고침</button>
+        </div>
+      </div>
+      <div class="cb" id="econ-news-feed">
+        <div class="news-skel"></div><div class="news-skel"></div><div class="news-skel"></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-hd"><div class="ct"><i class="ti ti-external-link"></i>주요 경제 미디어 바로가기</div></div>
+      <div class="cb" style="display:flex;flex-wrap:wrap;gap:8px">
+        <a class="btn btn-sm" href="https://www.google.com/search?q=오늘+경제+뉴스&tbm=nws" target="_blank" rel="noopener"><i class="ti ti-brand-google"></i>구글 경제뉴스</a>
+        <a class="btn btn-sm" href="https://finance.naver.com/news/" target="_blank" rel="noopener"><i class="ti ti-letter-n"></i>네이버 금융뉴스</a>
+        <a class="btn btn-sm" href="https://www.hankyung.com/finance" target="_blank" rel="noopener">📰 한국경제</a>
+        <a class="btn btn-sm" href="https://www.mk.co.kr/economy/" target="_blank" rel="noopener">📰 매일경제</a>
+        <a class="btn btn-sm" href="https://bloomberg.com/markets" target="_blank" rel="noopener">🌐 Bloomberg</a>
+        <a class="btn btn-sm" href="https://www.reuters.com/markets/" target="_blank" rel="noopener">🌐 Reuters</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 테마별 뉴스 -->
+  <section class="sec" id="sec-news-theme">
+    <div class="card" style="background:rgba(40,60,90,.12);border-color:var(--lstr)">
+      <div class="cb" style="display:flex;align-items:center;gap:11px;font-size:13px;color:var(--t1);line-height:1.7">
+        <i class="ti ti-tags" style="color:var(--gd);font-size:18px;flex-shrink:0"></i>
+        관심 테마를 선택하면 해당 테마 관련 최신 뉴스를 불러오고, AI 키워드 감성 분석으로 매수·중립·매도 시그널을 보여줍니다.
+      </div>
+    </div>
+    <!-- 테마 선택 탭 -->
+    <div style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:13px" id="news-theme-tabs">
+      <button class="tab on" data-nt="ai_semi">🤖 AI·반도체</button>
+      <button class="tab" data-nt="quantum">⚛️ 양자컴퓨터</button>
+      <button class="tab" data-nt="robot">🦾 로봇</button>
+      <button class="tab" data-nt="battery">🔋 2차전지</button>
+      <button class="tab" data-nt="space">🚀 우주항공</button>
+      <button class="tab" data-nt="defense">🛡️ 방산</button>
+    </div>
+    <!-- 감성 분석 결과 -->
+    <div id="theme-news-analysis-box"></div>
+    <!-- 뉴스 피드 -->
+    <div class="card">
+      <div class="card-hd">
+        <div class="ct" id="theme-news-feed-title"><i class="ti ti-tags"></i>AI·반도체 최신 뉴스</div>
+        <div style="display:flex;gap:7px;align-items:center">
+          <span class="nb-badge" id="theme-news-fresh-badge" style="display:none">LIVE</span>
+          <a class="btn btn-sm" id="theme-news-all-link" href="https://www.google.com/search?q=AI+반도체+관련주+뉴스&tbm=nws" target="_blank" rel="noopener"><i class="ti ti-external-link"></i>전체 뉴스</a>
+        </div>
+      </div>
+      <div class="cb" id="theme-news-feed-box">
+        <div class="news-skel"></div><div class="news-skel"></div><div class="news-skel"></div>
+      </div>
+    </div>
+  </section>
+
   </div></div></div>
 <div id="toast"></div>
 <nav id="mob-nav">
@@ -1125,7 +1192,7 @@ function toast(msg,type){
   clearTimeout(t._t);t._t=setTimeout(()=>{t.style.opacity='0';t.style.transform='translateX(-50%) translateY(8px)';},2600);
 }
 
-const TITLES={home:'오늘의 시황',themes:'관심 테마',watch:'관심 종목',calendar:'경제지표 일정',philosophy:'투자 원칙 & 경고',valuation:'밸류에이션 분석기',pnl:'손익 추적기',compare:'종목 비교기',psych:'투자심리 자가진단',portfolio:'포트폴리오 시뮬레이터',edu:'투자 교육 허브',macro:'경제지표 영향 분석',beginner:'🐣 주린이 입문 가이드',faq:'주린이 Q&A 30선',mistakes:'실수 사전 TOP 10','portfolio-template':'첫 포트폴리오 템플릿',scam:'사기·리딩방 주의보',fx:'환율 계산기',divi:'ISA·세금 계산기',settings:'환경설정'};
+const TITLES={home:'오늘의 시황',news:'오늘의 경제 뉴스','news-theme':'테마별 뉴스',themes:'관심 테마',watch:'관심 종목',calendar:'경제지표 일정',philosophy:'투자 원칙 & 경고',valuation:'밸류에이션 분석기',pnl:'손익 추적기',compare:'종목 비교기',psych:'투자심리 자가진단',portfolio:'포트폴리오 시뮬레이터',edu:'투자 교육 허브',macro:'경제지표 영향 분석',beginner:'🐣 주린이 입문 가이드',faq:'주린이 Q&A 30선',mistakes:'실수 사전 TOP 10','portfolio-template':'첫 포트폴리오 템플릿',scam:'사기·리딩방 주의보',fx:'환율 계산기',divi:'ISA·세금 계산기',settings:'환경설정'};
 function nav(id){
   document.querySelectorAll('.sec').forEach(s=>s.classList.remove('on'));
   document.querySelectorAll('.nb-b').forEach(b=>b.classList.remove('on'));
@@ -2762,6 +2829,193 @@ function renderScam(){
   </div>`;
 }
 
+/* ════════════════════════════════════════════════
+   뉴스 로딩 (RSS2JSON + Google News RSS)
+   무료·CORS 허용·키 불필요
+════════════════════════════════════════════════ */
+const RSS2JSON_EP='https://api.rss2json.com/v1/api.json?rss_url=';
+const GNEWS='https://news.google.com/rss/search?q=';
+const newsCache2={};
+const NEWS_TTL2=20*60*1000; // 20분 캐시
+
+function renderNewsSkel(el,n){
+  el.innerHTML=Array(n||4).fill('<div class="news-skel"></div>').join('');
+}
+
+function renderNewsCards(articles, el){
+  if(!articles||!articles.length){
+    el.innerHTML='<div style="font-size:13px;color:var(--t2);padding:8px 0">뉴스를 불러올 수 없습니다. 잠시 후 다시 시도하거나 아래 바로가기를 이용해 주세요.</div>';
+    return;
+  }
+  el.innerHTML=articles.slice(0,8).map(a=>{
+    const ago=timeAgo(a.pubDate||'');
+    const src2=(a.source?.name||a.author||'').replace(' - 네이버뉴스','').replace('Google 뉴스','').substring(0,20);
+    const desc=(a.description||'').replace(/<[^>]*>/g,'').substring(0,100);
+    return `<a class="news-card" href="${a.link||'#'}" target="_blank" rel="noopener">
+      <div class="news-card-top">
+        ${src2?`<span class="news-src">${src2}</span>`:''}
+        <span class="news-time">${ago}</span>
+      </div>
+      <div class="news-title">${(a.title||'').replace(/<[^>]*>/g,'')}</div>
+      ${desc?`<div class="news-desc">${desc}...</div>`:''}
+    </a>`;
+  }).join('');
+}
+
+/* 경제 뉴스 로드 */
+let econNewsLoaded=false;
+async function loadEconNews(){
+  const el=document.getElementById('econ-news-feed');
+  if(!el)return;
+  renderNewsSkel(el);
+  const cacheKey='econ';
+  if(newsCache2[cacheKey]&&Date.now()-newsCache2[cacheKey].ts<NEWS_TTL2){
+    renderNewsCards(newsCache2[cacheKey].data,el);
+    return;
+  }
+  const queries=['한국 주식 증시 오늘','미국 증시 월스트리트','금리 인플레이션 연준'];
+  try{
+    const results=await Promise.allSettled(queries.map(q=>
+      fetch(RSS2JSON_EP+encodeURIComponent(GNEWS+encodeURIComponent(q)+'&hl=ko&gl=KR&ceid=KR:ko')+'&count=10')
+        .then(r=>r.ok?r.json():null)
+    ));
+    let articles=[];
+    results.forEach(r=>{if(r.status==='fulfilled'&&r.value?.items)articles=articles.concat(r.value.items);});
+    // 중복 제거 + 시간순 정렬
+    const seen=new Set();
+    articles=articles.filter(a=>{if(seen.has(a.title))return false;seen.add(a.title);return true;});
+    articles.sort((a,b)=>new Date(b.pubDate)-new Date(a.pubDate));
+    newsCache2[cacheKey]={data:articles,ts:Date.now()};
+    renderNewsCards(articles,el);
+    const badge=document.getElementById('econ-news-fresh');
+    if(badge){badge.style.display='inline-flex';setTimeout(()=>{badge.style.display='none';},5000);}
+    econNewsLoaded=true;
+  }catch(e){
+    renderNewsCards([],el);
+  }
+}
+
+/* 테마별 뉴스 로드 */
+let currentNewsTheme='ai_semi';
+async function loadNewsTheme(themeId){
+  currentNewsTheme=themeId;
+  const el=document.getElementById('theme-news-feed-box');
+  const titleEl=document.getElementById('theme-news-feed-title');
+  const allLink=document.getElementById('theme-news-all-link');
+  if(!el)return;
+
+  const t=THEMES.find(x=>x.id===themeId);
+  if(t){
+    if(titleEl)titleEl.innerHTML=`<i class="ti ti-tags"></i>${t.icon} ${t.name} 최신 뉴스`;
+    if(allLink)allLink.href=`https://www.google.com/search?q=${encodeURIComponent(t.name+' 관련주')}&tbm=nws`;
+  }
+  renderNewsSkel(el);
+
+  // 감성 분석 박스 초기화
+  const anaBox=document.getElementById('theme-news-analysis-box');
+  if(anaBox)anaBox.innerHTML='';
+
+  const cacheKey='theme_'+themeId;
+  if(newsCache2[cacheKey]&&Date.now()-newsCache2[cacheKey].ts<NEWS_TTL2){
+    const cached=newsCache2[cacheKey];
+    renderNewsCards(cached.articles,el);
+    if(anaBox&&cached.analysis)renderNewsAnalysisBox(cached.analysis,themeId,anaBox);
+    return;
+  }
+
+  const kw=THEME_KEYWORDS[themeId];
+  if(!kw){renderNewsCards([],el);return;}
+
+  try{
+    const q1=kw.queries[0]||t.name;
+    const q2=kw.queries[1]||t.name+' 주가';
+    const [r1,r2]=await Promise.allSettled([
+      fetch(RSS2JSON_EP+encodeURIComponent(GNEWS+encodeURIComponent(q1)+'&hl=ko&gl=KR&ceid=KR:ko')+'&count=15').then(r=>r.ok?r.json():null),
+      fetch(RSS2JSON_EP+encodeURIComponent(GNEWS+encodeURIComponent(q2)+'&hl=ko&gl=KR&ceid=KR:ko')+'&count=10').then(r=>r.ok?r.json():null),
+    ]);
+    let articles=[];
+    [r1,r2].forEach(r=>{if(r.status==='fulfilled'&&r.value?.items)articles=articles.concat(r.value.items);});
+    const seen=new Set();
+    articles=articles.filter(a=>{if(seen.has(a.title))return false;seen.add(a.title);return true;});
+    articles.sort((a,b)=>new Date(b.pubDate)-new Date(a.pubDate));
+
+    const analysis=analyzeNewsSentiment(articles,themeId);
+    newsCache2[cacheKey]={articles,analysis,ts:Date.now()};
+
+    renderNewsCards(articles,el);
+    if(anaBox)renderNewsAnalysisBox(analysis,themeId,anaBox);
+
+    const badge=document.getElementById('theme-news-fresh-badge');
+    if(badge){badge.style.display='inline-flex';setTimeout(()=>{badge.style.display='none';},5000);}
+  }catch(e){
+    renderNewsCards([],el);
+  }
+}
+
+function renderNewsAnalysisBox(analysis,themeId,el){
+  if(!analysis||!el)return;
+  const total=analysis.pos+analysis.neu+analysis.neg||1;
+  const posP=Math.round(analysis.pos/total*100);
+  const negP=Math.round(analysis.neg/total*100);
+  const signal=posP>40?'매수 관심 ↑':negP>40?'매도 주의 ↑':'중립 관망';
+  const sigColor=posP>40?'var(--up)':negP>40?'var(--dn)':'var(--gd)';
+  const hotKws=Object.entries(analysis.keywords||{}).sort((a,b)=>Math.abs(b[1])-Math.abs(a[1])).slice(0,6);
+  el.innerHTML=`<div class="card" style="margin-bottom:13px">
+    <div class="card-hd"><div class="ct"><i class="ti ti-chart-pie"></i>뉴스 감성 분석 — ${THEMES.find(x=>x.id===themeId)?.name||themeId}</div>
+      <span style="font-size:13px;font-weight:800;color:${sigColor}">${signal}</span>
+    </div>
+    <div class="cb">
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px">
+        <div style="text-align:center;padding:10px;background:var(--upb);border-radius:var(--r);border:1px solid var(--upl)">
+          <div style="font-size:22px;font-weight:800;color:var(--up);font-family:var(--fm)">${posP}%</div>
+          <div style="font-size:11px;color:var(--t2);margin-top:3px;font-weight:700">강세 기사</div>
+        </div>
+        <div style="text-align:center;padding:10px;background:var(--ci);border-radius:var(--r);border:1px solid var(--ln)">
+          <div style="font-size:22px;font-weight:800;color:var(--t0);font-family:var(--fm)">${Math.round(analysis.neu/total*100)}%</div>
+          <div style="font-size:11px;color:var(--t2);margin-top:3px;font-weight:700">중립 기사</div>
+        </div>
+        <div style="text-align:center;padding:10px;background:var(--dnb);border-radius:var(--r);border:1px solid var(--dnl)">
+          <div style="font-size:22px;font-weight:800;color:var(--dn);font-family:var(--fm)">${negP}%</div>
+          <div style="font-size:11px;color:var(--t2);margin-top:3px;font-weight:700">약세 기사</div>
+        </div>
+      </div>
+      ${hotKws.length?`<div style="font-size:11.5px;color:var(--t2);font-weight:700;margin-bottom:7px">주요 키워드</div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px">${hotKws.map(([k,v])=>`<span style="padding:3px 10px;border-radius:99px;font-size:12px;font-weight:700;background:${v>0?'var(--upb)':'var(--dnb)'};color:${v>0?'var(--up)':'var(--dn)'};border:1px solid ${v>0?'var(--upl)':'var(--dnl)'}">${k}</span>`).join('')}</div>`:''}
+    </div>
+  </div>`;
+}
+
+/* 뉴스 탭 이벤트 */
+function initNewsThemeTabs(){
+  const tabs=document.querySelectorAll('[data-nt]');
+  tabs.forEach(tab=>{
+    tab.addEventListener('click',()=>{
+      tabs.forEach(t=>t.classList.remove('on'));
+      tab.classList.add('on');
+      loadNewsTheme(tab.dataset.nt);
+    });
+  });
+}
+
+/* ── nav 확장: news 탭 클릭 시 자동 로드 ── */
+const _origNavFn=nav;
+window._navWithNews=function(id){
+  _origNavFn(id);
+  if(id==='news'&&!econNewsLoaded)loadEconNews();
+  if(id==='news-theme')loadNewsTheme(currentNewsTheme);
+};
+// nb-b 버튼 클릭 리스너를 _navWithNews로 교체
+document.querySelectorAll('.nb-b[data-s]').forEach(b=>{
+  const clone=b.cloneNode(true);
+  b.parentNode.replaceChild(clone,b);
+  clone.addEventListener('click',()=>window._navWithNews(clone.dataset.s));
+});
+// data-nav 이벤트 위임도 _navWithNews 사용
+document.getElementById('content').addEventListener('click',e=>{
+  const b=e.target.closest('[data-nav]');
+  if(b)window._navWithNews(b.dataset.nav);
+});
+
 function initAll(){
   renderHome();renderThemeGrid();renderWatch();
   renderCalTabs();renderCalendar();
@@ -2777,6 +3031,7 @@ function initAll(){
   renderScam();
   renderAccView();calcR();
   updateCmpLinks();
+  initNewsThemeTabs();
 }
 initAll();
 </script>
